@@ -67,6 +67,7 @@ Zadania
 5. Odczytaj z tabeli [SalesLT].[Product] kolumny [ProductNumber] oraz [Size] i posortuj wynik rosnąco według wartości kolumny [Size], ale w taki sposób, żeby wartości 
    NULL znalazły się na końcu, a nie na początku wyniku. 
    Podpowiedź użyj funkcji CASE.
+   
 ------------------------------
    Rozdział 4
 ------------------------------
@@ -76,3 +77,32 @@ Zadania
    (kolumna [OrderDate] w drugim półroczu 2008 roku.
 
 3. Napisz zapytanie zwracające za każdym razem nazwę innego, losowo wybranego produktu.
+
+------------------------------
+   Rozdział 5
+------------------------------
+1. Odczytaj alfabetycznie uporzadkowaną listę nazw produktów sprzedawanych kiedykolwiek klientom o imieniu Jeffrey.
+
+2. Odczytaj imiona i nazwiska klientów, którzy nie złożyli ani jednego zamówienia.
+
+3. Bez używania funkcji CASE napisz zapytanie zwracające numer zamówienia (kolumna [SalesOrderID]), wysokość opłaty (kolumna [Freight]) i wyraz High lub Low, przy czym za 
+   kosztowne uznaj te zamówienia, których wartość opłaty przekracza 100, a pozostałe oceń jako małe. 
+
+------------------------------
+   Rozdział 6
+------------------------------
+ 1. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] wartości zamówień o najwyższych opłatach za wysyłkę zrealizowanych w każdym dniu dla poszczególnych klientów.
+
+2. Odczytaj nazwy produktów, które zostały sprzedane więcej niż trzy razy. Dadaj do wyniku liczbę tych produktów.
+
+3. Uruchom poniższy skrypt tworzący tabelę tymczasową i wstawiający do niej dane u numerach wybranych klientów, miesiącach złożenia przez nich zamówień i wartościach 
+   poszczególnych zamówień:
+--				CREATE TABLE #Sprzedaz
+--				([ID klienta] INT NOT NULL,
+--				Miesiac INT NOT NULL,
+--				Wartosc MONEY NOT NULL);
+--				Go
+--				INSERT INTO #Sprzedaz
+--				SELECT [CustomerID], DATEPART(MONTH, [OrderDate]), [TotalDue]
+--				FROM [SalesLT].[SalesOrderHeader];
+--				Go
