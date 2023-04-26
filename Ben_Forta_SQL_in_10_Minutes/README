@@ -1,0 +1,283 @@
+  Ben Forta SQL w mgnieniu oka. / Ben_Forta_SQL_in_10_Minutes 
+---------------------------------------------------------------
+Projekt został wykonany przy użyciu Microsoft SQL Server. / The project was made using Microsoft SQL Server.
+Ten projekt zawiera rozwiązanie poniższych zadań. / This project contains solution of this tasks.
+
+Zadania / Tasks
+
+------------------------------
+  Rozdział 2 
+------------------------------
+1. Napisz w SQL-u instrukcję, która pobiara identyfikatory wszystkich klientów (kl_id) z tabeli Klienci.  
+2. Tabela ElementyZamowienia zawiera wszystkie zamówione produkty (niektóre wielokrotnie). Napisz instrukcję, która pobiera listę zamówionych produktów (prod_id).
+  Istrukcja ma zwracać tylko listę unikatowych produktów, a nie wszystkie wystšpienia produktów z każdego zamówienia.  
+3. Napisz w SQL-u instrukcję pobierajšcš wszystkie kolumny z tabeli Klienci i innš instrukcę SELECT, która pobiera tylko identyfikatory klientów. 
+  Ukryj w komentarzu jedną instrukcję SELECT, aby móc uruchomić drugą. 
+------------------------------
+  Rozdział 3 
+------------------------------
+1. Napisz w SQL-u instrukcję, która pobiera nazwy wszystkich klientów (kl_nazwa) z tabeli Klienci. Wyświetl wyniki posortowane od Z do A. 
+2. Napisz w SQL-u instrukcję, która pobiera identyfikator klienta (kl_id) i numer zamówienia (zam_numer) z tabeli Zamowienia oraz sortuje wyniki najpierw według 
+  identyfikatorów klientów, a następnie według daty zamówienia w odwrotnej kolejności chronologicznej (czyli od najnowszych).
+3. Napisz w SQL-u instrukcję, która wyświetla liczbę sztuk i cenę jednostkową (prod_cena) z tabeli ElementyZamowienia. Wyniki mają być posortowane od największej 
+  liczby sztuk i najwyższych cen. 
+------------------------------
+  Rozdział 4 
+------------------------------
+1. Napisz instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_nazwa) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 12.99. 
+2. Napisz instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_nazwa) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 15 lub większej.
+3. Napisz instrukcję, która pobiera z tabeli ElementyZamowienia unikatową listę numerów zamówień (zam_numer) obejmujących przynajmniej 100 sztuk dowolnego produktu. 
+4. Napisz instrukcję, która pobiera z tabeli Produkty nazwę (prod_nazwa) i cenę (prod_cena) wszystkich produktów o cenie z przedziału od 20 do 40. Posortuj wyniki według ceny
+------------------------------
+  Rozdział 5
+------------------------------
+1. Napisz instukcję, która pobiera z tabeli Dostawcy nazwę dostawcy (dost_nazwa) i zwraca tylko dostawców z województwa mazowieckiego. Wymago to filtrowania zarówno 
+  według państwa Polska, jak i stanu, MAZ.
+2. Napisz instrukcje, która znajduje wszystkie zamówienia obejmujące przynajmniej 100 sztuk produktu BR01, BR02 lub BR03. Należy zwrócić numer zamówienia (zam_numer) 
+  i liczbę sztuk (ilosc) z tabeli ElementyZamowienia. Dane należy przefiltrować na podstawie identyfikatora produktu i liczby sztuk. 
+3. Napisz instukcję, która pobiera z tabeli Produkty nazwę (prod_nazwa) i cenę (prod_cena) wszystkich produktów o cenie z przedziału od 20 do 40. Użyj operatora AND i
+  posortuj wyniki według ceny
+------------------------------
+  Rozdział 6
+------------------------------
+1. Napisz instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których opisie występuje słowo szmacianka.
+2. Napisz instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których opisie nie występuje słowo 
+  szmacianka. Posortuj wyniki według nazw produktów.
+3. Napisz instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których opisie występują jednocześnie słowa
+  szmacianka i Rybka. Zastosuj operator AND i dwa porównania LIKE.
+4. Napisz instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których opisie występują słowa Rybaka i
+  szmacianka w takiej właśnie kolejności.
+------------------------------
+  Rozdział 7 
+------------------------------
+1. Napisz instrukcję, która pobiera z tabeli Dostawcy pola dost_id, dost_nazwa, dost_adres i dost_miasto. Nazwę pola dost_nazwa zamień na dnazwa, dost_miasto na dmiasto,
+  a dost_adres na dadres. Posortuj wyniki według nazw dostawców.
+2. Napisz instrukcję, która zwraca pola prod_id, prod_cena i cena_wyprz z tabeli Produkty. Pole cena_wyprz jest polem obliczanym zawierającym cenę wyprzedażową (rabat 10%).
+------------------------------
+  Rozdział 8
+------------------------------
+1. Napisz instrukcję, która zwraca identyfikator klienta (kl_id), nazwę klienta (kl_nazwa) i login (uzyt_login). Login ma składać się z wielkich liter i zawierać dwa 
+    pierwsze znaki danych kontaktowych klienta (kl_kontakt) i trzy pierwsze znaki miasta (kl_miasto).
+2. Napisz instrukcję, która zwraca numer (zam_numer) i datę (zam_data) wszystkich zamówień złożonych w styczniu 2020r. Dane mają być posortowane według daty zamówienia.
+------------------------------
+  Rozdział 9 
+------------------------------
+1. Napisz instrukcję, aby ustalić łączną liczbę sprzedanych produktów.
+2. Zmodyfikuj instrukcję z zadania 1, aby ustalić łączną liczbę sprzedanych produktów (prod_id) BR01.
+3. Napisz instrukcję, aby ustalić cenę (prod_cena) najdroższego produktu z tabeli Produkty, które kosztuje nie więcej niż 10. Obliczone pole nazwij cena_maks.
+------------------------------
+  Rozdział 10 
+------------------------------
+1. Tabela ElementyZamowienia zawiera pojedyncze pozycje każdego zamówienia. Napisz instrukcję, która zwraca liczbę pozycji (jako pole zam_pozycje) dla każdego numeru 
+  zamówienia (zam_numer). Posortuj według pola zam_pozycje.
+2. Napisz instrukcję która zwraca pole o nazwie najtanszy_prod, zawierające najtańszy produkt od każdego producenta (użyj pola prod_cena z tabeli Produkty). Posortuj 
+  wyniki od najtańszego produktu do najdroższego.
+3. Napisz instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień obejmujących przynajmniej 100 elementów.
+4. Napisz instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień, w których łączna cena wyniosła przynajmniej 1000. (musisz obliczyć
+   sumaryczną cenę produktów cena_elem mnożone prze ilosc). Posortuj wyniki według numerów zamówień.
+------------------------------
+  Rozdział 11 
+------------------------------
+1. Używając zapytania zagnieżdżonego, zwróć listę klientów, którzy kupili produkty o cenie 10 lub wyższej. Użyj tabeli ElementyZamowienia, aby znaleźć odpowiednie numery
+  zamówień (zam_numer), a następnie tabeli Zamowienia, by pobrać identyfikatory klientów (kl_id) powiązane z tymi zamówieniami.
+2. Chcesz ustalić daty, w których zamówiono produkt BR01. Napisz instrukcję z zapytaniem zagnieżdżającym, aby określić w których zamówieniach (z tabeli ElementyZamowienia)
+  znalazły się elementy o identyfikatorze (prod_id) BR01. Następnie zwróć identyfikator klienta (kl_id) i datę zamówienia (zam_data) dla każdego takiego zamówienia z tabeli
+  Zamowienia. Wyniki posortuj według daty zamówienia.
+3. Zamień poprzednie zadanie tak aby instrukcja zwracała emaile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty o identyfikatorze (prod_id) BR01. 
+4. Napisz instrukcję, która zwraca identyfikator klienta (kl_id z tabeli Zamowienia) i wartość wartosc_zam. Użyj zapytania zagnieżdżonego, aby zwrócić sumę wartości 
+  zamówień każdego klienta. Posortuj wyniki według wydatków poszczególnych klientów (od najwyższych do najniższych).
+5. Napisz instrukcję, która pobiera z tabeli Produkty wszystkie nazwy produktów (prod_nazwa), a także obliczoną kolumnę o nazwie sprzedano_sztuk zawierającą łączną liczbę
+  sprzedancyh sztuk każdego produktu. Tę liczbę pobierz za pomocą zapytania zagnieżdżonego i funkcji SUM(ilosc) operującej na tabeli ElementyZamowienia.
+------------------------------
+  Rozdział 12 
+------------------------------
+1. Napisz instrukcję, która zwraca nazwę klienta (kl_nazwa) z tabeli Klienci i numery powiązanych zamówień (zam_numer) z tabeli Zamówienia. Wynik posortuj najpierw według
+ nazw klientów, a następnie według numerów zamówień. Spróbuj wykonać to zadania dwukrotnie - raz z użyciem prostej składni złączeń wewnętrznych i raz za pomocą składni INNER JOIN.
+2. Oprócz zwracania nazwy klienta i numeru zamówienia z poprzedniego zadania dodaj trzecią kolumnęk wartosc_zam, zawierającą łączną wartość każdego zamówienia. Możesz to 
+ zrobić na dwa sposoby: tworząc kolumnę wartosc_zam za pomocą zapytania zagnieżdżonego z użyciem tabeli ElementyZamowienia lub złączając tabelę ElementyZamowienia z innymi
+ tabelami i używając funcji agregujacej.
+3. Napisz instrukcję, która pobiera daty zamówienia produktu BR01, przy czym użyj złączenia i prostej składni złączeń wewnętrznych.
+4. Napisz instrukcję, która zwracała emaile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty o identyfikatorze (prod_id) BR01. Użyj składni ANSI INNER JOIN.
+5. Napisz instrukcję, która za pomocą złączeń zwraca nazwy klientów (kl_nazwa) z tabeli Klienci i wartości ich zamówień z tabeli ElementyZamowienia. Aby połączyć te tabele,
+  musisz uwzględnić także tabelę Zamówienia. Posortuj wyniki według nazw klientów.
+------------------------------
+  Rozdział 13 
+------------------------------
+1. Napisz instrukcję ze złączeniem INNER JOIN, aby pobrać nazwy klientów (kl_nazwa z tabeli Klienci) i wszystkie numery zamówień (zam_numer z Zamowienia) każdego klienta.
+2. Zmodyfikuj instrukcję z poprzedniego zadania, tak aby wyświetlała wszystkie nazwy klientów (nawet tych którzy nie złożyli żadnych zamówień).
+3. Użyj złączenia OUTER JOIN, aby złączyć tabele Produkty i ElementyZamowienia. Instrukcja ma zwracać posortowaną listę nazw produktów (prod_nazwa) i numerów zamówień 
+  (zam_numer) powiązanych z każdy produktem.
+4. Zmodyfikuj utworzoną w zadaniu 3 instrukcję, aby zwracała łączną liczbę zamówień każdego produktu (zamiast numerów zamówień).
+5. Napisz instrukcję, która wyświetla dostawców (dost_id z tabeli Dostawcy) i liczbę produktów oferowanych przez każdego z nich. Należy pokazać także dostawców, którzy 
+  nie oferują żadnych produktów. Zastosuj złączenie OUTER JOIN i funkcję agregującą COUNT(), aby zliczyć, ile produktów z talebi Produkty oferuje każdy dostawca.
+------------------------------
+  Rozdział 14 
+------------------------------
+1. Napisz instrukcję, która obejmuje dwie instrukcje SELECT pobierające identyfikator produktu (prod_id) i ilosc z tabeli ElementyZamowienia. Filtrowanie w jednej 
+  instrukcji SELECT ma zwracać tylko te wiersze z kolumną ilość równą 100. a w drugiej wiersze z produktami o identyfikatorze rozpoczynającym się od liter BNBG. Wyniki 
+  posortuj według identyfikatorów produktów.
+2. Zmodyfikuj utworzoną w zadaniu 1 instrukcję, używając tylko jednej instrukcji SELECT.
+3. Napisz instrukcję, która zwraca i łączy nazwę produktu (prod_nazwa) z tabeli Produkty i nazwę klienta (kl_nazwa) z tabeli Klienci. Wyniki posortuj według nazw produktów.
+------------------------------
+  Rozdział 15 - Chapter 15
+------------------------------
+1. Używając instrukcji INSERT i dostępnych kolumn, dodaj swoje dane do tabeli Klienci. Bezpośrednio podaj dodawane kolumny i użyj tylko tych, których potrzebujesz.
+2. Utwórz kopie zapasowe tabel Zamowienia i ElementyZamowienia.
+------------------------------
+  Rozdział 16 
+------------------------------
+1. Skróty nazw polskich województw powinny składać się z wielkich liter. Napisz instrukcję, która modyfikuje wszystkie adresy z Polski - zarówno pole dost_woj w tabeli 
+  Dostawcy, jak i pole kl_woj w tabeli Klienci. Tak aby skróty nazw województw były zapisane wielkimi literami.
+2. Usuń dane dodane w zadaniu 1 w rozdziale 15. Najprierw przetestuj klauzulę za pomocą instrucji SELECT.
+------------------------------
+  Rozdział 17 
+------------------------------
+1. Dodaj kolumnę z adresem witryny (dost_witryna) do tabeli Dostawcy. Potrzebne jest tu pole tekstowe wystarczająco długie aby zmieścić adres URL.
+2. Użyj instrukcji UPDATE, aby zmodyfikować rekordy z tabeli Dostawcy i dodać do nich adres witryny. 
+------------------------------
+  Rozdział 18 
+------------------------------
+1. Utwórz perspektywę KlienciZZamowieniami zawierającą wszystkie kolumny z tabeli Klienci, ale obejmującą tylko wiersze klientów, którzy złożyli jakieś zamówienia.
+
+
+
+
+
+
+
+
+English
+------------------------------
+Chapter 2
+------------------------------
+1.  Write an SQL statement that retrieves all customer IDs (kl_id) from the Customers table.  
+2. The OrderItems table contains all ordered products (some multiple times). Write an SQL statement that retrieves a list of ordered products (prod_id).
+  The statement is intended to return only a list of unique products, not all instances of products from each order. 
+3. Write an SQL statement that retrieves all columns from the Customers table and another SELECT statement that retrieves only customer IDs.
+  Hide one SELECT statement in a comment so you can run the other.
+------------------------------
+Chapter 3
+------------------------------
+1. Write an SQL statement that retrieves the names of all customers (kl_name) from the Customers table. View results sorted from Z to A.
+2.Write an SQL statement that retrieves the customer ID (kl_id) and order number (zam_number) from the Orders table and sorts the results first by
+  customer IDs, then order date in reverse chronological order (most recent first).
+3.Write an SQL statement that displays the number of items and the unit price (product_price) from the OrderItems table. The results are to be sorted by largest
+  number of pieces and the highest prices.
+------------------------------
+Chapter 4
+------------------------------
+1. Write a statement that retrieves the product ID (prod_id) and product name (prod_nazwa) from the Products table and returns only products with a price of 12.99.
+2. Write a statement that retrieves the product ID (prod_id) and product name (prod_nazwa) from the Products table and returns only products with a price of 15 or more
+3. Write a statement that retrieves from the OrderItems table a unique list of order numbers (zam_number) for at least 100 items of any product.
+4. Write a statement that retrieves the name (prod_nazwa) and price (prod_cena) of all products with a price between 20 and 40 from the Products table. Sort the results by price
+------------------------------
+Chapter 5
+------------------------------
+1. Write an instruction that retrieves the supplier's name (dost_nazwa) from the Vendors table and returns only suppliers from the Mazowieckie voivodship. This requires 
+  filtering both by country Poland and by state, MAZ.
+2.Write an instruction that finds all orders of at least 100 units of BR01, BR02 or BR03. Return the order number (zam_numer)
+  and the number of pieces (ilosc) from the table ElementsOrders. The data should be filtered based on the product ID and number of pieces.
+3. Write a statement that retrieves the name (prod_nazwa) and price (prod_cena) of all products with a price between 20 and 40 from the Products table. Use the AND 
+  operator and sort results by price
+------------------------------
+Chapter 6
+------------------------------
+1. Write a statement that retrieves the name (prod_nazwa) and description (prod_opis) from the Products table and returns only those products whose description includes
+ the word szmacianka.
+2. Write a statement that retrieves the name (prod_nazwa) and description (prod_opis) from the Products table and returns only those products whose description not 
+  includes the word szmacianka. Sort results by product name.
+3. Write a statement that retrieves the name (prod_nazwa) and description (prod_opis) from the Products table and returns only those products whose description includes
+  the words szmacianka and Rybka. Use the AND operator and two LIKE comparisons.
+4. Write a statement that retrieves the name (prod_nazwa) and description (prod_opis) from the Products table and returns only those products whose description includes
+  in the description there are the words Rybak and szmacianka in that exact order.
+------------------------------
+Chapter 7
+------------------------------
+1. Write an instruction that retrieves the dost_id, dost_nazwa, dost_adres and dost_miasto rom the Vendors table. Replace the name of the dostawca_nazwa field with dnazwa, 
+  dost_miasto with dmiasto, and dost_adres to dadres. Sort the results by vendor names.
+2.Write an instruction that retrieves the prod_id, prod_cena and cena_wyprz from the Products table. The field cena_wyprz is a calculated field containing the sale price
+  (10% discount).
+------------------------------
+Chapter 8
+------------------------------
+1. Write an instruction that retrieves the (kl_id),  (kl_nazwa) and (uzyt_login). The login must consist of uppercase letters and contain two the first characters of the
+  customer's contact details (kl_kontakt) and the first three characters of the city (kl_miasto).
+2. Write an instruction that returns the number (zam_numer) and date (zam_data) of all orders placed in Styczen 2020. The data is to be sorted by order date.
+------------------------------
+Chapter 9
+------------------------------
+1. Write an instruction to calculate the total number of products that have been sold.
+2. Modify the instructions from exercise 1 to determine the total number of product with id BR01.
+3. Write an instruction to determine the price (prod_cena) of the most expensive product in the Products table that costs 10 or less. Name the calculated field cena_maks.
+------------------------------
+Chapter 10
+------------------------------
+1. The OrderItems table contains the individual items of each order. Write a statement that returns the number of items (as the zam_pozycje field) for each number
+  orders (zam_numer). Sort by the zam_pozycje field.
+2. Write a statement that returns a field named najtanszy_prod containing the cheapest product from each manufacturer (use the field prod_cena from the Products table). 
+  Sort results from the cheapest product to the most expensive.
+3.Write a statement that returns the order numbers (zam_numer from the OrderItems table) of all orders with at least 100 items.
+4. Write a statement that returns the numbers (zam_numer from the OrderItems table) of all orders where the total price was at least 1000. (you need to calculate
+   total price of products cena_elem multiplied by ilosc). Sort the results by order number.
+------------------------------
+Chapter 11 
+------------------------------
+1. Using a nested query, return a list of customers who have purchased products with a price of 10 or more. Use the OrderItems table to find the right numbers orders 
+  (zam_numer) and then the Orders table to retrieve the customer IDs (kl_id) associated with those orders.
+2. You want to determine the dates on which the product BR01 was ordered. Write a nesting query statement to specify in which orders (from the OrderItems table)
+  there are elements with the identifier (prod_id) BR01. Then return the customer id (kl_id) and order date (zam_data) for each such order from the table Orders. 
+  Sort results by order date.
+3. Replace the previous task so that the statement returns emails (kl_email from the Customers table) of all customers who purchased products with ID (prod_id) BR01. 
+4. Write a statement that returns the customer ID (kl_id from the Orders table) and the wartosc_zam value. Use a nested query to return the sum of values each 
+  customer's orders. Sort the results by each customer's spend (highest to lowest).
+5. Write a statement that retrieves all product names (prod_nazwa) from the Products table, as well as a calculated column called sprzedano_sztuk containing the total
+  sold units of each product. Get this number using a nested query and the SUM(ilosc) function operating on the OrderItems table.
+------------------------------
+Chapter 12
+------------------------------
+1. Write a statement that returns the customer name (kl_nazwa) from the Customers table and the related order numbers (zam_number) from the Orders table. Sort the result by first
+  customer names, then order numbers. Try this task twice - once using the inner join syntax and once using the INNER JOIN syntax.
+2. In addition to returning the customer name and order number from the previous task, add a third column, wartosc_zam, which contains the total value of each order. You can do it in 
+  two ways: by creating the wartosc_zam column using a nested query using the OrderItems table or by joining the OrderItems table with other tables and using an aggregate function.
+3. Write a statement that retrieves the order dates of product BR01 using a join and simple inner join syntax.
+4. Write a statement that returned emails (kl_email from the Customers table) of all customers who purchased products with ID (prod_id) BR01. Use the ANSI INNER JOIN syntax.
+5.Write a statement that, using joins, returns the customer names (kl_nazwa) from the Customers table and their order values from the OrderItems table. To join these tables,
+  you must also include the Orders table. Sort the results by customer name.
+------------------------------
+Chapter 13
+------------------------------
+1.Write an INNER JOIN statement to retrieve the customer names (kl_nazwa from the Customers table) and all order numbers (zam_numer from Orders) of each customer.
+2. Modify the instructions from the previous task so that it displays all customer names (even those who have not placed any orders).
+3. Use an OUTER JOIN to join the Products and OrderItems tables. The statement is supposed to return a sorted list of product names (prod_nazwa) and order numbers
+ (zam_numer) associated with each product
+4. Modify the statement you created in Task 3 to return the total number of orders for each product (instead of order numbers).
+5. Write a statement that displays the vendors (dost_id from the Vendors table) and the number of products offered by each of them. Providers should also be shown vendors
+which don't offer any products. Use an OUTER JOIN and the COUNT() aggregate function to count how many products from the Products table are offered by each vendors.
+------------------------------
+Chapter 14
+------------------------------
+1. Write a statement that includes two SELECT statements that retrieve the product ID (prod_id) and ilosc from the OrderItems table. Filtering in one of the SELECT statement
+ to return only those rows with a ilosc column equal to 100. and in the second, rows with products with an ID starting with the letters BNBG. Results sort by prod_id.
+2. Modify the statement you created in Task 1 using only one SELECT statement.
+3. Write a statement that returns and combines the product name (prod_nazwa) from the Products table and the customer name (kl_nazwa) from the Customers table. Sort the results by
+ product name.
+------------------------------
+Chapter 15
+------------------------------
+1. Using the INSERT statement and monitoring the column, add your data to the customer table. Specify the columns you add directly and use only the ones you need.
+2. Create backups of the Orders and OrderItems tables.
+------------------------------
+Chapter 16
+------------------------------
+1. Abbreviations of the names of Polish voivodships should consist of capital letters. Write an instruction that modifies all addresses from Poland - both the dost_woj field in the table
+Vendors as well as the kl_woj field in the Customers table, so that the abbreviations of the names of provinces are written in capital letters.
+2. Remove the data you added in Task 1 in Chapter 15. Test the clause first with a SELECT statement.
+------------------------------
+Chapter 17
+------------------------------
+1. Add a column with the site address (dost_witryna) to the Vendors table. You need a text field long enough to fit the URL.
+2. Use the UPDATE statement to modify the records in the Vendors table and add the site address to them.
+------------------------------
+Chapter 18
+------------------------------
+1. Create View KlienciZZamowieniami containing all the columns in the Customers table, but only the rows of customers who placed any orders.
