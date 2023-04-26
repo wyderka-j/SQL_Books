@@ -1,0 +1,78 @@
+Praktyczny kurs SQL, Wydanie III (Danuta Mendrala, Marcin Szeliga)
+
+https://helion.pl/ksiazki/praktyczny-kurs-sql-wydanie-iii-danuta-mendrala-marcin-szeliga,pksq3v.htm?from=ni#format/d
+
+W tym repozytorium udostępniam moje rozwiązania zadań, które znajdują się końcu każdego rozdziału. 
+Projekt został wykonany przy użyciu Microsoft SQL Server.
+
+
+Zadania 
+
+------------------------------
+  Rozdział 1 
+------------------------------
+1. Wyodrębnij kolumny, które zgodnie z definicją 3PN, powinny być przeniesione do tabel słownikowych.
+       		Płyty {ID płyty, Nazwa wykonawcy, Nazwa gatunku, Czas trwania, Opinia, Narodowość wykonawcy}
+
+2. Jak przekształcić poniższe tabele, aby każda książka mogła mieć dowolnie wielu autorów, a każdy autor mógł napisać dowolną liczbę książek?
+        	Autorzy {ID autora, Imię, Nazwisko}
+       		Książki {ID książki, Tytuł, ID autora1, IDautora2, IDautora3}
+
+3. Doprowadź poniższą tabelę kolejno do pierszej, drugiej i trzeciej postaci normalnej.
+        	Uczniowie {Imię, Nazwisko, Adres, Ocena, Data wystawienia oceny, Uwagi}
+
+------------------------------
+  Rozdział 2
+------------------------------
+1. Zaimplementuj w jęzuku SQL poniższy, zapisany w pseudokodzie, algorytm przeszukiwania tabeli:
+ 	a) Odczyta wiersz tabeli Customer
+ 	b) Sprawdź, czy w kolumnie LasName znajduje się wartość Kumar
+ 	c) Jeśli tak, skopiuj wiersz do tabeli tymczasowej
+ 	d) Sprawdź, czy tabela zawiera dalsze wiersze:
+ 		- Jeżeli tak, powtórz poprzednie kroki
+ 		- Jeżeli nie, zwróć użytkownikowi zawartość tabeli tymczasowej
+
+2. Czy potrafisz bez wykonywania poniższych instrukcji powiedzieć, jakie będą ich wyniki?
+ 		SELECT 1
+ 		WHERE NOT NULL = - NULL;
+ 
+ 		SELECT 1 + '1' +NULL;
+
+3. Czy to, że SQL jest językiem interpretowanym, a serwer bazodanowy wykona każdą poprawną instrukcję przysłaną przez użytkownika, może mieć wpływ na bazpieczeństwo?
+   Uzasadnij swoją odpowiedź, podając przykład.
+ 
+------------------------------
+   Rozdział 3
+------------------------------
+1. Odczytaj z tabeli [SalesLT].[Product] nazwy towarów (kolumna [Name]), oraz powiększone o 20% ich ceny katalogowe (oblicz je na podstawie dancyh z kolumny [ListPrice]).
+
+2. Oblicz, ile dni upłynęło pomiędzy złożeniem  zamówienia a wysłaniem zrealizowanych zamówień (różnice między wartościami kolumn [ShpiDate] i [OrderDate] tabeli
+   [SalesLT].[SalesOrderHeader]).
+
+3. Wykorzystaj wiadomości z tego rozdziału, w tym opisane funkcje systemowe, do napisania zapytania, którego sktórony wynik został zamieszczony poniżej:
+  		  	  (No column name)			(No column name)		(No column name)
+  		  	  Produkt Touring-1000 Blue, 54		kosztuje			2384.10
+  		  	  Produkt Touring-1000 Blue, 54		kosztuje			2384.10
+  		  	  Produkt Mointain-200 Silver, 38	kosztuje			2320.00
+  		  	  Produkt Mointain-200 Silver, 38	kosztuje			2320.00
+  Podpowiedź: dane o produktach znajdują się w tabeli [SalesLT].[Product].
+
+4. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] ułożoną od najnowszych do najstarszych listę dat wszystkich zamówień. Wynik zapytania powinien mieć formę 
+   rok-miesiąc-dzień.
+			(No colum name)
+			2014-4-1
+		 	2008-6-1
+   W rozwiązaniu użyj funkcji YEAR(), MONTH() i DAY().
+
+5. Odczytaj z tabeli [SalesLT].[Product] kolumny [ProductNumber] oraz [Size] i posortuj wynik rosnąco według wartości kolumny [Size], ale w taki sposób, żeby wartości 
+   NULL znalazły się na końcu, a nie na początku wyniku. 
+   Podpowiedź użyj funkcji CASE.
+------------------------------
+   Rozdział 4
+------------------------------
+1. Odczytaj z tabeli [SalesLT].[Product] nazwy produktów, których koszt jest ponad dwukrotnie niższy od ceny, a ostatnim znakiem kodu towaru jest 4 lub 8.
+
+2. Z tabeli [SalesLT].[SalesOrderHeader] odczytaj numery (kolumna [SalesOrderID]) i wysokości opłat (kolumna [Freight]) 5% zamówień o najniższym koszcie wysyłki złożonych
+   (kolumna [OrderDate] w drugim półroczu 2008 roku.
+
+3. Napisz zapytanie zwracające za każdym razem nazwę innego, losowo wybranego produktu.
