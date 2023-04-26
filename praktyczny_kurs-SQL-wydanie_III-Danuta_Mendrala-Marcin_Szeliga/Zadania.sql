@@ -160,3 +160,74 @@ ORDER BY Freight;
 SELECT TOP 1 Name
 FROM SalesLT.Product
 ORDER BY NEWID();
+
+------------------------------
+-- Rozdział 5
+------------------------------
+
+-- 1. Odczytaj alfabetycznie uporzadkowaną listę nazw produktów sprzedawanych kiedykolwiek klientom o imieniu Jeffrey.
+
+SELECT DISTINCT P.Name
+FROM SalesLT.Product AS P
+JOIN SalesLT.SalesOrderDetail AS OD
+	ON P.ProductID=OD.ProductID
+JOIN SalesLT.SalesOrderHeader AS OH
+	ON OD.SalesOrderID=OH.SalesOrderID
+JOIN SalesLT.Customer AS C
+	ON C.CustomerID=OH.CustomerID
+WHERE C.FirstName = 'Jeffrey';
+
+-- 2. Odczytaj imiona i nazwiska klientów, którzy nie złożyli ani jednego zamówienia.
+
+SELECT FirstName, LastName
+FROM SalesLT.Customer AS C
+LEFT OUTER JOIN SalesLT.SalesOrderHeader AS OH
+	ON C.CustomerID = OH.CustomerID
+WHERE OH.CustomerID IS NULL;
+
+--3. Bez używania funkcji CASE napisz zapytanie zwracające numer zamówienia (kolumna [SalesOrderID]), wysokość opłaty (kolumna [Freight]) i wyraz High lub Low, 
+-- przy czym za kosztowne uznaj te zamówienia, których wartość opłaty przekracza 100, a pozostałe oceń jako małe. 
+
+SELECT SalesOrderID, Freight, 'High'
+FROM SalesLT.SalesOrderHeader 
+WHERE Freight > 100
+UNION ALL
+SELECT SalesOrderID, Freight, 'Low' 
+FROM SalesLT.SalesOrderHeader 
+WHERE Freight <= 100;
+
+------------------------------
+-- Rozdział 6
+------------------------------
+
+-- 1. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] wartości zamówień o najwyższych opłatach za wysyłkę zrealizowanych w każdym dniu dla poszczególnych klientów.
+
+SELECT OrderDate, CustomerID, MAX(Freight)
+FROM SalesLT.SalesOrderHeader
+GROUP BY OrderDate, CustomerID;
+
+-- 2. Odczytaj nazwy produktów, które zostały sprzedane więcej niż trzy razy. Dadaj do wyniku liczbę tych produktów.
+
+SELECT Name, COUNT(P.ProductID)
+FROM SalesLT.Product AS P
+JOIN SalesLT.SalesOrderDetail AS SOD ON P.ProductID = SOD.ProductID
+GROUP BY Name
+HAVING COUNT(P.ProductID) > 3;
+
+-- 3. Uruchom poniższy skrypt tworzący tabelę tymczasową i wstawiający do niej dane u numerach wybranych klientów, miesiącach złożenia przez nich zamówień i 
+--	wartościach poszczególnych zamówień:
+--				CREATE TABLE #Sprzedaz
+--				([ID klienta] INT NOT NULL,
+--				Miesiac INT NOT NULL,
+--				Wartosc MONEY NOT NULL);
+--				Go
+--				INSERT INTO #Sprzedaz
+--				SELECT [CustomerID], DATEPART(MONTH, [OrderDate]), [TotalDue]
+--				FROM [SalesLT].[SalesOrderHeader];
+--				Go
+
+SELECT *
+FROM #Sprzedaz
+PIVOT (SUM(Wartosc) 
+FOR Miesiac IN ([4], [6])) 
+AS Piv;
