@@ -231,3 +231,55 @@ FROM #Sprzedaz
 PIVOT (SUM(Wartosc) 
 FOR Miesiac IN ([4], [6])) 
 AS Piv;
+
+------------------------------
+-- Rozdział 7
+------------------------------
+
+-- 1. Policz, ile razy sprzedany został każdy produkt, a następnie ponumeruj wiersze wyniku tego zapytania na dwa sposoby: w jednej kolumnie umieść numery od jednego
+-- (najczęściej sprzedawany produkt) do ostatniego na podstawie pozycji wiersza z danym produktem, w drugiej wstaw numery na podstawie liczby sprzedaży danego towaru
+-- (towary sprzedane tyle samo razy powinny mieć taki sam numer). Częściowy wynik pokazany został poniżej:
+--					ProductNumber	SalesCount	(No column name)	(No column name)
+--					LJ-0192-L		10			1			1
+--					VE-C304-S		10			2			1
+--					SJ-0194-X		9			3			2
+--					CA-1098			9			4			2
+--					SJ-0194-L		8			5			3
+--					RA-H123			8			6			3
+
+SELECT ProductNumber, COUNT(P.ProductID) AS SalesCount, 
+	ROW_NUMBER() OVER (ORDER BY COUNT(P.ProductID) DESC), 
+	DENSE_RANK() OVER (ORDER BY COUNT(P.ProductID) DESC)
+FROM SalesLT.Product AS P
+JOIN SalesLT.SalesOrderDetail AS SOD 
+	ON P.ProductID = SOD.ProductID
+GROUP BY ProductNumber;
+
+-- 2. Policz sumę zamówień na poziomie dni, miesięcy i lat dat zapłaty za poszczególne zamówienia (wartości kolumny DueDate). Dadaj też do zapytania sumę wartości 
+-- wszystkich zamówień. Częściowy wynik pokazany został poniżej:
+--				year	month	day	SalesPerDay	SalesPerMonth	SalesPerYear	OverallSales
+--				2008	7	16	1170,5376	751225,2685	956303,5949	1157312,3799
+--				2008	7	17	2361,6403	751225,2685	956303,5949	1157312,3799
+--				2008	7	18	70742,0359	751225,2685	956303,5949	157312,3799
+--				2008	7	18	70742,0359	751225,2685	956303,5949	1157312,3799
+--				2008	8	7	101811,538	111088,344	956303,5949	1157312,3799
+--				2008	8	7	101811,538	111088,344	956303,5949	1157312,3799
+
+SELECT YEAR(DueDate) AS year, MONTH(DueDate) AS month, DAY(DueDate) AS day, 
+	SUM(TotalDue) OVER (PARTITION BY DAY(DueDate)) AS SalesPerDay, 
+	SUM(TotalDue) OVER (PARTITION BY MONTH(DueDate)) AS SalesPerMonth, 
+	SUM(TotalDue) OVER (PARTITION BY YEAR(DueDate)) AS SalesPerYear, 
+	SUM(TotalDue) OVER () AS OverallSales
+FROM SalesLT.SalesOrderHeader;
+
+-- 3. Policz różnicę wartości pomiędzy dwoma kolejnymi zamówieniami (przyjmij, że kolejność zamówień wyznaczana jest przez wartość SalesOrderID). Częściowy wynik 
+-- pokazany został poniżej:
+--					SalesOrderID	TotalDue	(No column name)
+--					71774		972,785		NULL
+--					71776		87,0851		-885,6999
+--					71780		42452,6519	42365,5668
+--					71782		43962,7901	1510,1382
+
+SELECT SalesOrderID, TotalDue, 
+	TotalDue - LAG(TotalDue) OVER (ORDER BY SalesOrderID)
+FROM SalesLT.SalesOrderHeader;
