@@ -91,18 +91,50 @@ Zadania
 ------------------------------
    Rozdział 6
 ------------------------------
- 1. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] wartości zamówień o najwyższych opłatach za wysyłkę zrealizowanych w każdym dniu dla poszczególnych klientów.
+1. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] wartości zamówień o najwyższych opłatach za wysyłkę zrealizowanych w każdym dniu dla poszczególnych klientów.
 
 2. Odczytaj nazwy produktów, które zostały sprzedane więcej niż trzy razy. Dadaj do wyniku liczbę tych produktów.
 
 3. Uruchom poniższy skrypt tworzący tabelę tymczasową i wstawiający do niej dane u numerach wybranych klientów, miesiącach złożenia przez nich zamówień i wartościach 
    poszczególnych zamówień:
---				CREATE TABLE #Sprzedaz
---				([ID klienta] INT NOT NULL,
---				Miesiac INT NOT NULL,
---				Wartosc MONEY NOT NULL);
---				Go
---				INSERT INTO #Sprzedaz
---				SELECT [CustomerID], DATEPART(MONTH, [OrderDate]), [TotalDue]
---				FROM [SalesLT].[SalesOrderHeader];
---				Go
+				CREATE TABLE #Sprzedaz
+				([ID klienta] INT NOT NULL,
+				Miesiac INT NOT NULL,
+				Wartosc MONEY NOT NULL);
+				Go
+				INSERT INTO #Sprzedaz
+				SELECT [CustomerID], DATEPART(MONTH, [OrderDate]), [TotalDue]
+				FROM [SalesLT].[SalesOrderHeader];
+				Go
+
+------------------------------
+   Rozdział 7
+------------------------------
+1. Policz, ile razy sprzedany został każdy produkt, a następnie ponumeruj wiersze wyniku tego zapytania na dwa sposoby: w jednej kolumnie umieść numery od jednego
+   (najczęściej sprzedawany produkt) do ostatniego na podstawie pozycji wiersza z danym produktem, w drugiej wstaw numery na podstawie liczby sprzedaży danego towaru
+   (towary sprzedane tyle samo razy powinny mieć taki sam numer). Częściowy wynik pokazany został poniżej:
+  					ProductNumber	SalesCount	(No column name)	(No column name)
+  					LJ-0192-L	10			1			1
+  					VE-C304-S	10			2			1
+  					SJ-0194-X	9			3			2
+  					CA-1098		9			4			2
+  					SJ-0194-L	8			5			3
+  					RA-H123		8			6			3
+
+2. Policz sumę zamówień na poziomie dni, miesięcy i lat dat zapłaty za poszczególne zamówienia (wartości kolumny DueDate). Dadaj też do zapytania sumę wartości 
+wszystkich zamówień. Częściowy wynik pokazany został poniżej:
+  				year	month	day	SalesPerDay	SalesPerMonth	SalesPerYear	OverallSales
+  				2008	7	16	1170,5376	751225,2685	956303,5949		1157312,3799
+  				2008	7	17	2361,6403	751225,2685	956303,5949		1157312,3799
+  				2008	7	18	70742,0359	751225,2685	956303,5949		157312,3799
+  				2008	7	18	70742,0359	751225,2685	956303,5949		1157312,3799
+  				2008	8	7	101811,538	111088,344	956303,5949		1157312,3799
+ 				2008	8	7	101811,538	111088,344	956303,5949		1157312,3799
+
+3. Policz różnicę wartości pomiędzy dwoma kolejnymi zamówieniami (przyjmij, że kolejność zamówień wyznaczana jest przez wartość SalesOrderID). Częściowy wynik 
+ pokazany został poniżej:
+  					SalesOrderID	TotalDue	(No column name)
+  					71774		972,785		NULL
+  					71776		87,0851		-885,6999
+  					71780		42452,6519	42365,5668
+  					71782		43962,7901	1510,1382
