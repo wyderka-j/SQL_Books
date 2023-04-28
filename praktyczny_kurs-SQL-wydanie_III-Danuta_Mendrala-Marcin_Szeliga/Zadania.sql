@@ -283,3 +283,32 @@ FROM SalesLT.SalesOrderHeader;
 SELECT SalesOrderID, TotalDue, 
 	TotalDue - LAG(TotalDue) OVER (ORDER BY SalesOrderID)
 FROM SalesLT.SalesOrderHeader;
+
+------------------------------
+-- Rozdział 8
+------------------------------
+
+-- 1. Odczytaj za pomocą podzapytania numery zamówień złożonych przez klienta o nazwisku Eminhizer.
+
+SELECT SalesOrderID
+FROM SalesLT.SalesOrderHeader AS OH
+WHERE OH.CustomerID IN (SELECT CustomerID FROM SalesLT.Customer WHERE LastName = 'Eminhizer');
+
+-- 2. Klauzula TOP pozwala odczytać określoną liczbę wierszy, ale zaczynając zawsze od pierszego lub ostatniego. Chociaż serwer SQL umożliwia określenie nie tylko liczby 
+--    wierszy, lecz także pozycji pierwszego zaklasyfikowanego wiersza, to niektóre serwery nie mają takiej funkcjonalmości. Zadanie polega na odczytaniu przy użyciu 
+--    niepowiązanego podzapytania, ale bez klauzuli OVER, wartości pięciu zamówień posortowanych według ich wartosci i zwróceniu zamówień znajdujących się na pozycjach od 
+--    10. do 15.
+
+SELECT TOP 5 SalesOrderID, TotalDue
+FROM SalesLT.SalesOrderHeader
+WHERE SalesOrderID NOT IN (SELECT TOP 10 SalesOrderID FROM SalesLT.SalesOrderHeader ORDER BY TotalDue DESC)
+ORDER BY TotalDue DESC;
+
+-- 3. Odczytaj numery (kolumna SalesOrderID), daty zapłaty (kolumna DueDate) i numery klientów (kolumna CustomerID) dla zamówień złożonych ostatniego roboczego dnia każdego
+--    miesiąca.
+--    Podpowiedź: ponieważ ostatni roboczy dień może być inny dla poszczególnych miesięcy, użyj podzapytania niepowiązanego zwracającego ostatnią (największą datę złożenia 
+--    zamówienia w każdym miesiącu).
+
+SELECT SalesOrderID, DueDate, CustomerID
+FROM SalesLT.SalesOrderHeader
+WHERE OrderDate IN (SELECT MAX(OrderDate) FROM SalesLT.SalesOrderHeader GROUP BY YEAR(OrderDate), MONTH(OrderDate));
