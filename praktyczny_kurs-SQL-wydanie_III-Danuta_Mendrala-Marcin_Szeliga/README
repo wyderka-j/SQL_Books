@@ -57,16 +57,14 @@ Zadania
   		  	  Produkt Mointain-200 Silver, 38	kosztuje			2320.00
   Podpowiedź: dane o produktach znajdują się w tabeli [SalesLT].[Product].
 
-4. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] ułożoną od najnowszych do najstarszych listę dat wszystkich zamówień. Wynik zapytania powinien mieć formę 
-   rok-miesiąc-dzień.
+4. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] ułożoną od najnowszych do najstarszych listę dat wszystkich zamówień. Wynik zapytania powinien mieć formę rok-miesiąc-dzień.
 			(No colum name)
 			2014-4-1
 		 	2008-6-1
    W rozwiązaniu użyj funkcji YEAR(), MONTH() i DAY().
 
-5. Odczytaj z tabeli [SalesLT].[Product] kolumny [ProductNumber] oraz [Size] i posortuj wynik rosnąco według wartości kolumny [Size], ale w taki sposób, żeby wartości 
-   NULL znalazły się na końcu, a nie na początku wyniku. 
-   Podpowiedź użyj funkcji CASE.
+5. Odczytaj z tabeli [SalesLT].[Product] kolumny [ProductNumber] oraz [Size] i posortuj wynik rosnąco według wartości kolumny [Size], ale w taki sposób, żeby wartości NULL 
+   znalazły się na końcu, a nie na początku wyniku. Podpowiedź użyj funkcji CASE.
    
 ------------------------------
    Rozdział 4
@@ -111,8 +109,8 @@ Zadania
    Rozdział 7
 ------------------------------
 1. Policz, ile razy sprzedany został każdy produkt, a następnie ponumeruj wiersze wyniku tego zapytania na dwa sposoby: w jednej kolumnie umieść numery od jednego (najczęściej
-   sprzedawany produkt) do ostatniego na podstawie pozycji wiersza z danym produktem, w drugiej wstaw numery na podstawie liczby sprzedaży danego towaru (towary sprzedane 
-   tyle samo razy powinny mieć taki sam numer). Częściowy wynik pokazany został poniżej:
+   sprzedawany produkt) do ostatniego na podstawie pozycji wiersza z danym produktem, w drugiej wstaw numery na podstawie liczby sprzedaży danego towaru (towary sprzedane tyle
+   samo razy powinny mieć taki sam numer). Częściowy wynik pokazany został poniżej:
   					ProductNumber	SalesCount	(No column name)	(No column name)
   					LJ-0192-L	10			1			1
   					VE-C304-S	10			2			1
@@ -162,8 +160,8 @@ Zadania
 					SELECT Name
 					FROM SalesLT.ProductCategory
 
-2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało argumentu 
-   typu SARG.
+2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało argumentu typu
+   SARG.
 					SELECT SalesOrderID
 					FROM SalesLT.SalesOrderDetail
 					WHERE UnitPrice*.77 > 900;
