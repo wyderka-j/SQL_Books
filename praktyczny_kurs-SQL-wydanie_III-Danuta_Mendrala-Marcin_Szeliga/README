@@ -151,3 +151,26 @@ wszystkich zamówień. Częściowy wynik pokazany został poniżej:
 3. Odczytaj numery (kolumna SalesOrderID), daty zapłaty (kolumna DueDate) i numery klientów (kolumna CustomerID) dla zamówień złożonych ostatniego roboczego dnia każdego miesiąca.
    Podpowiedź: ponieważ ostatni roboczy dień może być inny dla poszczególnych miesięcy, użyj podzapytania niepowiązanego zwracającego ostatnią (największą datę złożenia 
    zamówienia w każdym miesiącu).
+
+------------------------------
+   Rozdział 9
+------------------------------
+ 1. Poniższe zapytanie zwracające nazwy produktów i kategorii działa zbyt wolno. Jak można poprawić jego wydajność?
+					SELECT Name
+					FROM SalesLT.Product
+					UNION 
+					SELECT Name
+					FROM SalesLT.ProductCategory
+
+2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało 
+	argumentu typu SARG.
+					SELECT SalesOrderID
+					FROM SalesLT.SalesOrderDetail
+					WHERE UnitPrice*.77 > 900;
+
+
+3. Znajdź optymalny indeks dla poniższego zapytania:
+					SELECT DueDate, SalesOrderID, TotalDue,
+					LAG(TotalDue) OVER (PARTITION BY DueDate ORDER BY DueDate) AS PreviousTotalDue
+					FROM SalesLT.SalesOrderHeader
+					OEDER BY DueDate;
