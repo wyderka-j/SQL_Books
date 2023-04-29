@@ -162,8 +162,8 @@ wszystkich zamówień. Częściowy wynik pokazany został poniżej:
 					SELECT Name
 					FROM SalesLT.ProductCategory
 
-2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało 
-	argumentu typu SARG.
+2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało argumentu 
+   typu SARG.
 					SELECT SalesOrderID
 					FROM SalesLT.SalesOrderDetail
 					WHERE UnitPrice*.77 > 900;
