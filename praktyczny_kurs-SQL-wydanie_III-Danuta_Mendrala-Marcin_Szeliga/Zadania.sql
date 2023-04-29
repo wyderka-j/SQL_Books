@@ -312,3 +312,41 @@ ORDER BY TotalDue DESC;
 SELECT SalesOrderID, DueDate, CustomerID
 FROM SalesLT.SalesOrderHeader
 WHERE OrderDate IN (SELECT MAX(OrderDate) FROM SalesLT.SalesOrderHeader GROUP BY YEAR(OrderDate), MONTH(OrderDate));
+
+------------------------------
+-- Rozdział 9
+------------------------------
+
+-- 1. Poniższe zapytanie zwracające nazwy produktów i kategorii działa zbyt wolno. Jak można poprawić jego wydajność?
+--					SELECT Name
+--					FROM SalesLT.Product
+--					UNION 
+--					SELECT Name
+--					FROM SalesLT.ProductCategory
+
+-- Wydajność możemy poprawić poprzez zastosowanie operatora UNION ALL
+SELECT Name
+FROM SalesLT.Product
+UNION ALL
+SELECT Name
+FROM SalesLT.ProductCategory;
+
+-- 2. Wykonanie poniższego zapytania wymaga przeskanowania (odczytania w całości) indeksu założonego na kolumnie UnitPrice. Przepisz to zapytanie tak, żeby używało argumentu
+--    typu SARG.
+--					SELECT SalesOrderID
+--					FROM SalesLT.SalesOrderDetail
+--					WHERE UnitPrice*.77 > 900;
+
+SELECT SalesOrderID
+FROM SalesLT.SalesOrderDetail
+WHERE UnitPrice > 900 / 0.77;
+
+-- 3. Znajdź optymalny indeks dla poniższego zapytania:
+--					SELECT DueDate, SalesOrderID, TotalDue,
+--					LAG(TotalDue) OVER (PARTITION BY DueDate ORDER BY DueDate) AS PreviousTotalDue
+--					FROM SalesLT.SalesOrderHeader
+--					OEDER BY DueDate;
+
+CREATE INDEX IX_SalesOrderHeader_DueDate
+ON SalesLT.SalesOrderHeader (DueDate)		
+INCLUDE (SalesOrderID, TotalDue);
