@@ -36,3 +36,15 @@ Zadania / Exercises
     		          ON c.customer_id = <2>
  	            WHERE CONVERT(date, r.rental_date) = '2005-06-14'
  	            ORDER BY <3> <4>;
+
+4.1. Które wartości payment_id zostaną zwrócone po użyciu tego warunku filtrowania? / Which of the payment IDs would be returned by the following filter conditions?
+     customer_id <> 5 AND (amount > 8 OR date(payment_date) = '2005-08-23')
+
+4.2. Które wartości payment_id zostaną zwrócone po użyciu tego warunku filtrowania? / Which of the payment IDs would be returned by the following filter conditions?
+     customer_id = 5 AND NOT (amount > 6 OR date(payment_date) = '2005-06-19')
+
+4.3. Przygotuj zapytanie pobierające wszystkie rekordy tabeli payments, w których wartość kolumny amount wynosi 1.98, 7.98 lub 9.98. / 
+     Construct a query that retrieves all rows from the payments table where the amount is either 1.98, 7.98, or 9.98.
+
+4.4. Przygotuj zapytanie pobierajace wszystkie rekordy wszystkich klientów, których nazwisko zawiera literę A na drugiej pozycji i literę W na dowolnej pozycji po A. /
+     Construct a query that finds all customers whose last name contains an A in the second position and a W anywhere after the A.
