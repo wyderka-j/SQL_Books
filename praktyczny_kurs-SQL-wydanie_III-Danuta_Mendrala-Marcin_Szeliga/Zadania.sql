@@ -369,8 +369,8 @@ INTO Panie
 FROM SalesLT.Customer
 WHERE RIGHT(FirstName, 1) = 'a';
 
--- 3. Wykonaj poniższe instrukcje modyfikujące dane w utworzonej w poprzednim zadaniu tabeli Panie, a następnie zsynchronizuj zawartość tej tabeli z danymi pań 
---	  odczytanymi z tabeli [SalesLT].[Customer]:
+-- 3. Wykonaj poniższe instrukcje modyfikujące dane w utworzonej w poprzednim zadaniu tabeli Panie, a następnie zsynchronizuj zawartość tej tabeli z danymi pań odczytanymi z
+--    tabeli [SalesLT].[Customer]:
 --					DELETE FROM Panie
 --					WHERE [CustomerID] < 50;
 --
