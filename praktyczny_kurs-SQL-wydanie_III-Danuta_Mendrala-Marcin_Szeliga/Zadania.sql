@@ -350,3 +350,49 @@ WHERE UnitPrice > 900 / 0.77;
 CREATE INDEX IX_SalesOrderHeader_DueDate
 ON SalesLT.SalesOrderHeader (DueDate)		
 INCLUDE (SalesOrderID, TotalDue);
+
+------------------------------
+-- Rozdział 10
+------------------------------
+
+-- 1. Przeceń o 25% wszystkie produkty z kategorii Forks, jednocześnie zwiększając ich koszt standardowy o dwie jednostki.
+
+UPDATE SalesLT.Product
+SET ListPrice *= 0.75, StandardCost += 2
+FROM SalesLT.ProductCategory AS C
+WHERE C.ProductCategoryID = SalesLT.Product.ProductCategoryID AND C.Name = 'Forks';
+
+-- 2. Utwórz tabelę Panie zawierającą identyfikatory, imiona i nazwiska wszystkich klientek firmy AdventureWorks. Przyjmij, że tylko imiona pań kończą się na literę a.
+
+SELECT CustomerID, FirstName, LastName
+INTO Panie
+FROM SalesLT.Customer
+WHERE RIGHT(FirstName, 1) = 'a';
+
+-- 3. Wykonaj poniższe instrukcje modyfikujące dane w utworzonej w poprzednim zadaniu tabeli Panie, a następnie zsynchronizuj zawartość tej tabeli z danymi pań 
+--	  odczytanymi z tabeli [SalesLT].[Customer]:
+--					DELETE FROM Panie
+--					WHERE [CustomerID] < 50;
+--
+--					UPDATE Panie
+--					SET [FirstName]='X'
+--					WHERE [CustomerID]%2=1;
+--
+--					INSERT INTO Panie ([FirstName], [LastName])
+--					VALUES ('Ala', 'Nowak');
+
+WITH Klientki AS
+(SELECT CustomerID, FirstName, LastName 
+FROM SalesLT.Customer 
+WHERE RIGHT(FirstName, 1) = 'a')
+MERGE INTO Panie AS C
+USING Klientki AS K 
+ON C.CustomerID = K.CustomerID
+WHEN MATCHED AND C.FirstName <> K.FirstName THEN 
+   UPDATE
+   SET C.FirstName = K.FirstName
+WHEN NOT MATCHED THEN
+   INSERT (FirstName, LastName)
+   VALUES (K.FirstName, K.LastName)
+WHEN NOT MATCHED BY SOURCE THEN
+   DELETE;
