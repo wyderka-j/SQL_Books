@@ -172,3 +172,22 @@ Zadania
 					LAG(TotalDue) OVER (PARTITION BY DueDate ORDER BY DueDate) AS PreviousTotalDue
 					FROM SalesLT.SalesOrderHeader
 					OEDER BY DueDate;
+------------------------------
+   Rozdział 10
+------------------------------
+1. Przeceń o 25% wszystkie produkty z kategorii Forks, jednocześnie zwiększając ich koszt standardowy o dwie jednostki.
+
+2. Utwórz tabelę Panie zawierającą identyfikatory, imiona i nazwiska wszystkich klientek firmy AdventureWorks. Przyjmij, że tylko imiona pań kończą się na literę a.
+
+3. Wykonaj poniższe instrukcje modyfikujące dane w utworzonej w poprzednim zadaniu tabeli Panie, a następnie zsynchronizuj zawartość tej tabeli z danymi pań odczytanymi z 
+   tabeli [SalesLT].[Customer]:
+					DELETE FROM Panie
+					WHERE [CustomerID] < 50;
+
+					UPDATE Panie
+					SET [FirstName]='X'
+					WHERE [CustomerID]%2=1;
+
+					INSERT INTO Panie ([FirstName], [LastName])
+					VALUES ('Ala', 'Nowak');
+
