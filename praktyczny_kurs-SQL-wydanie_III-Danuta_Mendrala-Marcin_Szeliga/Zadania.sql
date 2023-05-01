@@ -419,3 +419,63 @@ WHEN NOT MATCHED BY SOURCE THEN
 --    aby w przypadku zgłoszenia przez proceduję błędu braku połączenia ze zdalnym serwerem nie trzeba było ponownie wykonywać długotrwałych modyfikacji danych?
 
 -- Aby rozwiązać ten problem, należy przed próbą połączenia się ze zdalnym serwerem zapisać stan transakcji za pomocą punktu przywracania.
+
+------------------------------
+-- Rozdział 12
+------------------------------
+
+-- 1. Na podstawie poniższych informacji utwórz tabelę i nałóż na nią wymagane ograniczenia:
+--    Każda osoba musi podać imię i nazwisko oraz adres e-mail i numer telefonu. Większość osób mieszka w Katowicach. Wiek i płeć, tak jak nazwa miasta, są informacjami
+--    pocjonalnymi. Osoby muszą się zarejestrować, podając niepowtarzalny 5-znakowy kod promocyjny.
+
+CREATE TABLE Biegacze (
+	ID INT PRIMARY KEY,
+	Imię VARCHAR(30) NOT NULL,
+	Nazwisko VARCHAR(45) NOT NULL,
+	Email VARCHAR(75) NOT NULL,
+	Telefon VARCHAR(15) NOT NULL,
+	Kod CHAR(5) NOT NULL UNIQUE,
+	Miasto VARCHAR(30) DEFAULT 'Katowice',
+	Wiek TINYINT CHECK(Wiek BETWEEN 5 AND 105),
+	Płeć CHAR(1) CHECK (Płeć IN ('K', 'M')));
+
+-- 2. Zaimplementuj opracowany w rozdziale 1. projekt tabel, w których będzie można zapisywać informację o książkach i ich autorac, przy czym jeden aitor będzie mógł 
+--    napisać wiele książek, a książka będzie mogła mieć kilku autorów:
+--					Autorzy {IDAutora, Imię, Nazwisko}
+--					Książki {IDKsiążki, Tytuł, DataWydania}
+--					AutorzyKsiażki {IDAutra, IDKsiązki}
+
+CREATE TABLE Autorzy (
+   IDAutora INT IDENTITY PRIMARY KEY,
+   Imię VARCHAR(30) NOT NULL,
+   Nazwisko VARCHAR(45) NOT NULL);
+
+CREATE TABLE Książki (
+   IDKsiążki INT IDENTITY PRIMARY KEY,
+   Tytuł VARCHAR(100) NOT NULL,
+   DataWydania DATE NOT NULL);
+
+CREATE TABLE AutorzyKsiążki (
+   IDAutora INT REFERENCES Autorzy,
+   IDKsiążki INT REFERENCES Książki);
+
+-- 3. Kolega, któremu zlecono taką zmianę struktury bazy danych, aby możliwe było zapisywanie w niej informacji o modelach towarów, zaproponował poniższe rozwiązanie:
+--					ALTER TABLE Produkcja.Towary
+--					ADD Model VARCHAR(5) CONSTRAINT CK_TowaryModel CHECK (Model IN ('B1', 'A3', 'X54'));
+--    Zakładając, że nazwa modelu musi być sprawdzana i odpowiadać jednej z zatwierdzonych nazw, jak wytłumaczysz koledze, że jego pomysł nie jest najlepszy? Znajdź też
+--    właściwe rozwiązanie problemu.
+
+
+-- Ten pomysł nie jest najlepszy, ponieważ zapisywanie na stałe listy poprawnych nazw modeli w ograniczeniu, może drastycznie wpłynąć na obniżenie wydajności bazy danych.
+-- Stanie się tak kiedy będziemy chcieli zmienić listę zatwierdzonych modeli, wtedy wymagana będzie zmiana struktury tabeli.
+
+CREATE TABLE Produkcja.Modele (
+Nazwa VARCHAR(5) PRIMARY KEY);
+INSERT INTO Produkcja.Modele 
+VALUES ('BRAK!');
+ALTER TABLE Produkcja.Towary
+ADD Model VARCHAR(5) REFERENCES Produkcja.Modele;
+UPDATE Produkcja.Towary
+SET Model = 'BRAK!';
+ALTER TABLE Produkcja.Towary
+ALTER COLUMN Model VARCHAR(5) NOT NULL;
