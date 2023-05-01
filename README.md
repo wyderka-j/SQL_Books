@@ -1,4 +1,3 @@
-#SQL_Books
 
 Repozytorium zawiera rozwiązania zadań z różnych książek poświęconych nauce języka SQL.
 
