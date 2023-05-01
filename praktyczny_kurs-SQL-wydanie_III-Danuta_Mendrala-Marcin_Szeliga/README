@@ -191,3 +191,17 @@ Zadania
 					INSERT INTO Panie ([FirstName], [LastName])
 					VALUES ('Ala', 'Nowak');
 
+------------------------------
+   Rozdział 11
+------------------------------
+1. Twoim zadaniem jest przygotowanie raportu podsumowującego roczną sprzedaż. Wyliczając sumy i średnie wartośvi sprzedaży produktów, kilkaktrotnie musisz odczytać tabelę 
+   SalesOrderDetail. Jak zagwarantujesz poprawność wyników raportu?
+
+2. Po przerwie na lunch użytkownicy zgłaszają, żr próby dalszej pracy z bazą dancyh kończąsię chwilowym zawieszeniem proramu i wreszcie komunikatem błędu mówiącym, iż serwer
+   bazodanowy jest niedostępny. Po sprawdzeniu okazuje się, że serwer i sieć działają normalnie, a baza nie została uszkodzona. Co jest najbardziej prowdopodobną przyczyną 
+   problemu?
+
+3. Wramach tworzonej procedury modyfikujesz jeden wiersz, informujący o wykonaniu wszystkich operacji, do tabeli znajdującej się w bazie donych na zdalnym serwerze. Połączenie
+   między serwerami jest mocno obciążone i zdarza się, że czas nawiązywania sesji i przesyłania dancyh pomiędzy serwerami wieloktrotnie się wydłuża. Co zrobić, aby w przypadku
+   zgłoszenia przez proceduję błędu braku połączenia ze zdalnym serwerem nie trzeba było ponownie wykonywać długotrwałych modyfikacji danych?
+
