@@ -510,3 +510,20 @@ JOIN SalesLT.ProductCategory AS C ON P.ProductCategoryID = C.ProductCategoryID;
 -- 3. Załóż unikatowy indeks na kolumnach [SalesOrderID] i [UnitPrice] talebi [SalesLT].[SalesOrderDetail].
 
 --Niemożliwe jest wykonanie tego zadania, ponieważ występują powtarzające się wartości w kolumnach SalesOrderID oraz UnitPrice.
+
+------------------------------
+-- Rozdział 14
+------------------------------
+
+-- 1. Odbierz użytkownikom Danka i Marcin dostęp do zapisanych w kolumnie Phone tabeli [SalectLT].[Customer] numerów telefonów.
+
+DENY SELECT, UPDATE
+ON SalesLT.Customer (Phone)
+TO Danka, Marcin;
+
+-- 2. Pozwól użytkownikowi Marcin na przekazanie innym użytkownikom wszystkich uprawnień do tabeli [dbo].[BuildVersion].
+
+GRANT CONTROL
+ON dbo.BuildVersion
+TO Marcin
+WITH GRANT OPTION;
