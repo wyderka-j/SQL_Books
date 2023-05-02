@@ -224,3 +224,21 @@ Zadania
    Zakładając, że nazwa modelu musi być sprawdzana i odpowiadać jednej z zatwierdzonych nazw, jak wytłumaczysz koledze, że jego pomysł nie jest najlepszy? Znajdź też właściwe
    rozwiązanie problemu.
 
+------------------------------
+  Rozdział 13
+------------------------------
+1. Przekształć poniższe zapytanie tak, aby mogłobyć użyte jako definicja widoku:
+					SELECT C.Name, P.Name, P.ListPrice * 1.23
+					FROM SalesLT.Product AS P
+					JOIN SalesLT.ProductCategory AS C 
+					ON P.ProductCategoryID = C.ProductCategoryID
+
+2. Czy poniższy widok umożliwia modyfikowanie danych? Uzasadnij swoją odpowiedź.
+					CREATE VIEW Zadanie2
+					AS
+					SELECT DISTRINCT [FirstName] + ' ' + [LastName] AS Client, [SalesOrderID], [OrderDate]
+					FROM [SalesLT].[SalesOrderHeader] AS OH
+					JOIN [SalesLT].[Customer] AS C
+					ON C.CustomerID = OH.CustomerID;
+
+3. Załóż unikatowy indeks na kolumnach [SalesOrderID] i [UnitPrice] talebi [SalesLT].[SalesOrderDetail].
