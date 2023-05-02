@@ -479,3 +479,34 @@ UPDATE Produkcja.Towary
 SET Model = 'BRAK!';
 ALTER TABLE Produkcja.Towary
 ALTER COLUMN Model VARCHAR(5) NOT NULL;
+
+------------------------------
+-- Rozdział 13
+------------------------------
+
+-- 1. Przekształć poniższe zapytanie tak, aby mogłobyć użyte jako definicja widoku:
+--				SELECT C.Name, P.Name, P.ListPrice * 1.23
+--				FROM SalesLT.Product AS P
+--				JOIN SalesLT.ProductCategory AS C 
+--				ON P.ProductCategoryID = C.ProductCategoryID
+
+CREATE VIEW vProduct (Category, Product, WithTax) AS
+SELECT C.Name, P.Name, P.ListPrice * 1.23
+FROM SalesLT.Product AS P
+JOIN SalesLT.ProductCategory AS C ON P.ProductCategoryID = C.ProductCategoryID;
+
+-- 2. Czy poniższy widok umożliwia modyfikowanie danych? Uzasadnij swoją odpowiedź.
+--				CREATE VIEW Zadanie2
+--				AS
+--				SELECT DISTRINCT [FirstName] + ' ' + [LastName] AS Client, [SalesOrderID], [OrderDate]
+--				FROM [SalesLT].[SalesOrderHeader] AS OH
+--				JOIN [SalesLT].[Customer] AS C
+--				ON C.CustomerID = OH.CustomerID;
+
+
+--Nie, ponieważ wstawianie danych poprzez widok uniemożliwia wyrażenie użyte w pierwszej kolumnie [FirstName] + ' ' + [LastName] AS Client. Ponieważ w tabeli bazowej nie ma
+--kolumny Client, serwer bazodanowy nie miałby gdzie zapisać wstawianych przez widok wierszy. Ponadto w zapytaniu występuje słowo kluczowe DISTINCT.
+
+-- 3. Załóż unikatowy indeks na kolumnach [SalesOrderID] i [UnitPrice] talebi [SalesLT].[SalesOrderDetail].
+
+--Niemożliwe jest wykonanie tego zadania, ponieważ występują powtarzające się wartości w kolumnach SalesOrderID oraz UnitPrice.
