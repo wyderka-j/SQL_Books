@@ -242,3 +242,10 @@ Zadania
 					ON C.CustomerID = OH.CustomerID;
 
 3. Załóż unikatowy indeks na kolumnach [SalesOrderID] i [UnitPrice] talebi [SalesLT].[SalesOrderDetail].
+
+------------------------------
+  Rozdział 14
+------------------------------
+1. Odbierz użytkownikom Danka i Marcin dostęp do zapisanych w kolumnie Phone tabeli [SalectLT].[Customer] numerów telefonów.
+
+2. Pozwól użytkownikowi Marcin na przekazanie innym użytkownikom wszystkich uprawnień do tabeli [dbo].[BuildVersion].
