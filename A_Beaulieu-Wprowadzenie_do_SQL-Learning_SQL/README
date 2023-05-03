@@ -77,6 +77,6 @@ Zadania / Exercises
      Write a query that returns the title of every film in which an actor with the first name JOHN appeared.
 
 5.3. Utwórz zapytanie zwracające wszystkie rekordy klientów mieszkających w tym samym mieście. Musisz przeprowadzić złączenie tabeli address z nią samą, a każdy rekord powinien
-     zawierać dwa różne adresy.
-     Construct a query that returns all addresses that are in the same city. You will need to join the address table to itself, and each row should include two different addresses.
+     zawierać dwa różne adresy. /
+     Construct a query that returns all addresses that are in the same city. You will need to join the address table to itself, and each row should include 2 different addresses
 
