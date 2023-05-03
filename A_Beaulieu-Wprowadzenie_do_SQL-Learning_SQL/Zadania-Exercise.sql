@@ -27,10 +27,10 @@ FROM actor
 WHERE last_name IN ('WILLIAMS', 'DAVIS');
 
 -- Zadanie / Exercise 3.3 
--- Utwórz zapytanie do tabeli rental zwracające identyfikatory wszystkich klientów, którzy wypożyczyli film 5 czerwca 2005 roku (wykorzystaj kolumnę rental.rental_date, do zignorowania 
--- komponentu godziny możesz użyć funcji date()). Wyświetl tylko po jednym rekordzie dla każdego identyfikatora klienta. /
--- Write a query against the rental table that returns the IDs of the customers who rented a film on July 5, 2005 (use the rental.rental_date column, and you can use the date() function to
--- ignore the time component). Include a single row for each distinct customer ID.
+-- Utwórz zapytanie do tabeli rental zwracające identyfikatory wszystkich klientów, którzy wypożyczyli film 5 czerwca 2005 roku (wykorzystaj kolumnę rental.rental_date, do
+-- zignorowania komponentu godziny możesz użyć funcji date()). Wyświetl tylko po jednym rekordzie dla każdego identyfikatora klienta. /
+-- Write a query against the rental table that returns the IDs of the customers who rented a film on July 5, 2005 (use the rental.rental_date column, and you can use the date()
+-- function to ignore the time component). Include a single row for each distinct customer ID.
 
 SELECT DISTINCT customer_id
 FROM rental
@@ -78,7 +78,8 @@ WHERE customer_id = 5
 	AND NOT (amount > 6 OR date(payment_date) = '2005-06-19');
 
 -- Zadanie / Exercise 4.3
--- Przygotuj zapytanie pobierające wszystkie rekordy tabeli payments, w których wartość kolumny amount wynosi 1.98, 7.98 lub 9.98. / Construct a query that retrieves all rows from the payments table where the amount is either 1.98, 7.98, or 9.98.
+-- Przygotuj zapytanie pobierające wszystkie rekordy tabeli payments, w których wartość kolumny amount wynosi 1.98, 7.98 lub 9.98. / 
+-- Construct a query that retrieves all rows from the payments table where the amount is either 1.98, 7.98, or 9.98.
 
 SELECT amount
 FROM payment
@@ -91,3 +92,64 @@ WHERE amount IN (1.98, 7.98, 9.98);
 SELECT first_name, last_name
 FROM customer
 WHERE last_name LIKE '_A%W%';
+
+------------------------------
+-- Rozdział 5 / Chapter 5
+------------------------------
+
+-- Zadanie / Exercise 5.1
+-- uzupełnij brakujące fragmenty kodu (oznaczone za pomocą <#>) w zapytaniu, które powoduje wygenerowanie pokazanych rekordów. /
+-- Fill in the blanks (denoted by <#> ) for the following query to obtain the results that follow.
+--			SELECT c.first_name, c.last_name, a.address, ct.city
+--			FROM customer c 
+--			    INNER JOIN address <1>
+--			    ON c.address_id = a.address_id
+--			    INNER JOIN city ct 
+--			    ON a.city_id = <2>
+-- 			WHERE a.district = 'California'
+--	+------------+-----------+------------------------+----------------+
+--	| first_name | last_name | address                | city           |
+--	+------------+-----------+------------------------+----------------+
+--	| PATRICIA   | JOHNSON   | 1121 Loja Avenue       | San Bernardino |
+--	| BETTY      | WHITE     | 770 Bydgoszcz Avenue   | Citrus Heights |
+--	| ALICE      | STEWART   | 1135 Izumisano Parkway | Fontana        |
+--	| ROSA       | REYNOLDS  | 793 Cam Ranh Avenue    | Lancaster      |
+--	| RENEE      | LANE      | 533 al-Ayn Boulevard   | Compton        |
+--	| KRISTIN    | JOHNSTON  | 226 Brest Manor        | Sunnyvale      |
+--	| CASSANDRA  | WALTERS   | 920 Kumbakonam Loop    | Salinas        |
+--	| JACOB      | LANCE     | 1866 al-Qatif Avenue   | El Monte       |
+--	| RENE       | MCALISTER | 1895 Zhezqazghan Drive | Garden Grove   |
+--	+------------+-----------+------------------------+----------------+
+--	9 rows in set (0.00 sec)
+
+
+SELECT c.first_name, c.last_name, a.address, ct.city
+FROM customer c 
+    INNER JOIN address a
+    ON c.address_id = a.address_id
+    INNER JOIN city ct 
+    ON a.city_id = ct.city_id
+WHERE a.district = 'California';
+
+-- Zadanie / Exercise 5.2
+-- Utwórz zapytanie zwracające tytuł każdego filmu, w którym wystąpili aktorzy o imieniu JOHN.
+-- Write a query that returns the title of every film in which an actor with the first name JOHN appeared.
+
+SELECT f.title
+FROM film f
+    INNER JOIN film_actor fa 
+    ON f.film_id = fa.film_id
+    INNER JOIN actor a 
+    ON a.actor_id = fa.actor_id
+WHERE a.first_name = 'JOHN';
+
+-- Zadanie / Exercise 5.3
+-- Utwórz zapytanie zwracające wszystkie rekordy klientów mieszkających w tym samym mieście. Musisz przeprowadzić złączenie tabeli address z nią samą, a każdy rekord powinien
+-- zawierać dwa różne adresy./ 
+-- Construct a query that returns all addresses that are in the same city. You will need to join the address table to itself, and each row should include two different addresses.
+
+SELECT a1.address addr1, a2.address addr2, a1.city_id
+FROM address a1
+    INNER JOIN address a2 
+WHERE a1.city_id = a2.city_id
+AND a1.address_id <> a2.address_id;
