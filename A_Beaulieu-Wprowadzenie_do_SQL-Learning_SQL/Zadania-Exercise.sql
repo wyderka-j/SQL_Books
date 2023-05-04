@@ -208,8 +208,9 @@ ORDER BY last_name;
 SELECT SUBSTRING('Proszę wyodrębnić podciąg tekstowy z danego ciągu tekstowego', 19, 7);
 
 -- Zadanie / Exercise 7.2
--- Utwórz zapytanie zwracające wartość bezwzględną ze znakiem (-1,0,1) dla liczby -25,7823. Wygenerowane dane powinny zawierać również liczbę zaokrągloną do najbliższych setnych części.
---Write a query that returns the absolute value and sign ( −1 , 0 , or 1 ) of  −25.76823 . Also return the number rounded to the nearest hundredth.
+-- Utwórz zapytanie zwracające wartość bezwzględną ze znakiem (-1,0,1) dla liczby -25,7823. Wygenerowane dane powinny zawierać również liczbę zaokrągloną do najbliższych 
+-- setnych części.
+-- Write a query that returns the absolute value and sign ( −1 , 0 , or 1 ) of  −25.76823 . Also return the number rounded to the nearest hundredth.
 
 SELECT SIGN(-25.76823) AS sign, ABS(-2576823) AS abs, ROUND(-25.76823, 2) AS round;
 
