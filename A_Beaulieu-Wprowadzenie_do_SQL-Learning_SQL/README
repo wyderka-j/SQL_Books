@@ -114,7 +114,7 @@ Zadania / Exercises
      Construct a query against the film table that uses a filter condition with a noncorrelated subquery against the category table to find all action films:
       (category.name = 'Action')
 
-9.2. Zapytanie z ćwiczenia 9.1 zmodyfikuj w taki sposób, aby używało powiązanego podzapytania do tabel category i film_category w celu wygenerowania tych samych danych wyjściowych.
+9.2. Zapytanie z ćwiczenia 9.1 zmodyfikuj w taki sposób, aby używało powiązanego podzapytania do tabel category i film_category w celu wygenerowania tych samych danych.
      Rework the query from Exercise 9-1 using a correlated subquery against the category and film_category tables to achieve the same results.
 
 9.3. Przeprowadź złączenie następującego zapytania z podzapytaniem do tabeli film_actor w celu wyświetlenia informacji o poziomie poszczególnych aktorów.
