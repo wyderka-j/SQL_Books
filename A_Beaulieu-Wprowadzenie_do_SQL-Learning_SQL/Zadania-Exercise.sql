@@ -416,3 +416,42 @@ SUM(CASE WHEN rating = 'PG-13' THEN 1 ELSE 0 END) pg_13,
 SUM(CASE WHEN rating = 'R' THEN 1 ELSE 0 END) r,
 SUM(CASE WHEN rating = 'NC-17' THEN 1 ELSE 0 END) nc_17
 FROM film;
+
+------------------------------
+-- Rozdział 12 / Chapter 12
+------------------------------
+
+-- Zadanie / Exercise 12.1
+-- Utwórz transakcję umożliwiającą wykonanie przelewu 50 złotych z konta 123 na konto 789. Do tabeli transaction trzeba wstawić dwa rekordy i uaktualnić dwa rekordy w tabeli
+-- account. Wykorzystaj następujące definicje tabel i danych.
+-- Użyj polecenia txn_type_cd = 'C' do określenia uznania (dodania środków) i txn_type_cd = 'D' do wskazania obciążenia (pobrania środków).
+-- Create a transaction to transfer PLN 50 from account 123 to account 789. You need to insert two records into the transaction table and update two records in the account 
+-- table. Use the following table and data definitions.
+-- Use txn_type_cd = 'C' to indicate credit (add funds) and txn_type_cd = 'D' to indicate debit (debit funds).
+--  	Account										Transaction
+--	+------------+---------------+--------------------+				+--------+------------+------------+-------------+--------+
+--	| account_id | avail_balance | last_activity_date |				| txn_id | txn_date   | account_id | txn_type_cd | amount |
+--	+------------+---------------+--------------------+				+--------+------------+------------+-------------+--------+
+--	|        123 |           500 | 2019-07-10         |				|   1001 | 2019-05-15 |        123 | C           |    500 |
+--	|        789 |            75 | 2019-06-22         |				|   1002 | 2019-06-01 |        789 | C           |     75 |
+--	+------------+---------------+--------------------+				+--------+------------+------------+-------------+--------+
+
+START TRANSACTION;
+
+INSERT INTO Transaction (txn_id, txn_date, account_id, txn_type_cd, amount)
+VALUES (1003, now(), 123, 'D', 50);
+
+INSERT INTO Transaction (txn_id, txn_date, account_id, txn_type_cd, amount)
+VALUES (1004, now(), 789, 'C', 50);
+
+UPDATE Account
+SET avail_balance = avail_balance - 50,
+last_activity_date = now()
+WHERE account_id = 123;
+
+UPDATE Account
+SET avail_balance = avail_balance + 50,
+last_activity_date = now()
+WHERE account_id = 789;
+
+COMMIT;
