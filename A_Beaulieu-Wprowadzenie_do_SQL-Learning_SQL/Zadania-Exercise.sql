@@ -303,3 +303,64 @@ UNION ALL
 SELECT 'Newcomer' level, 1 min_roles, 19 max_roles
 ) grps
 ON actr.num_roles BETWEEN grps.min_roles AND grps.max_roles;
+
+------------------------------
+-- Rozdział 10 / Chapter 10
+------------------------------
+
+-- Zadanie / Exercise 10.1
+-- Używając przedstawionych tutaj definicji tabel i ich danych, utwórz zapytanie zwracające rekordy wszystkich klientów wraz z sumą dokonanych przez nich płatności.
+-- Using the table definitions and their data presented here, write a query that returns each customer name along with their total payments:
+-- 	customer1							payment1
+--	+-------------+-------------+					+------------+-------------+--------+
+--	| customer_id | name        |					| payment_id | customer_id | amount |
+--	+-------------+-------------+					+------------+-------------+--------+
+--	|           1 | John Smith  |					|        101 |           1 |   8.99 |
+--	|           2 | Kathy Jones |					|        102 |           3 |   4.99 |
+--	|           3 | Greg Oliver |					|        103 |           1 |   7.99 |
+--	+-------------+-------------+					+------------+-------------+--------+
+
+SELECT c.name, SUM(p.amount) total_payments
+FROM customer1 c 
+LEFT OUTER JOIN payment1 p 
+    ON c.customer_id = p.customer_id
+GROUP BY c.name;
+
+-- Zadanie / Exercise 10.2
+-- Zmodyfikuj zapytanie w ćwiczeniu 10.1 w taki sposób, aby używało złączenia zewnętrznego. / Modify the query in Exercise 10.1 to use an outer join.
+
+SELECT c.name, SUM(p.amount) total_payments
+FROM payment1 p 
+RIGHT OUTER JOIN customer1 c
+    ON c.customer_id = p.customer_id
+GROUP BY c.name;
+
+-- Zadanie / Exercise 10.3
+-- Opracuj zapytanie pozwalające wygenerować zbiór {1,2,3, ..., 99, 100}. (Podowiedź użyj złączenia krzyżowego z co najmniej dwoma podzapytaniami kluazuli FROM). /
+-- Develop a query to generate the set {1,2,3, ..., 99, 100}. (Prompt use a cross join with at least two subqueries of the FROM clause.)
+
+SELECT ones.x + tens.x + 1
+FROM (
+SELECT 0 x UNION ALL
+SELECT 1 x UNION ALL
+SELECT 2 x UNION ALL
+SELECT 3 x UNION ALL
+SELECT 4 x UNION ALL
+SELECT 5 x UNION ALL
+SELECT 6 x UNION ALL
+SELECT 7 x UNION ALL
+SELECT 8 x UNION ALL
+SELECT 9 x 
+) ones
+CROSS JOIN (
+SELECT 0 x UNION ALL
+SELECT 10 x UNION ALL
+SELECT 20 x UNION ALL
+SELECT 30 x UNION ALL
+SELECT 40 x UNION ALL
+SELECT 50 x UNION ALL
+SELECT 60 x UNION ALL
+SELECT 70 x UNION ALL
+SELECT 80 x UNION ALL
+SELECT 90 x 
+) tens;
