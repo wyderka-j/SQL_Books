@@ -145,3 +145,33 @@ Zadania / Exercises
 10.3. Opracuj zapytanie pozwalające wygenerować zbiór {1,2,3, ..., 99, 100}. (Podowiedź użyj złączenia krzyżowego z co najmniej dwoma podzapytaniami kluazuli FROM). /
       Develop a query to generate the set {1,2,3, ..., 99, 100}. (Prompt use a cross join with at least two subqueries of the FROM clause.)
 
+11.1. Zmodyfikuj zapytanie wykorzystujące wyrażenie CASE, aby ten sam wynik został wygenerowany po użyciu wyszukiwanego wyrażenia CASE. Postaraj sie użyć jak najmniej klauzul
+      WHEN.
+      Modify the query that uses the CASE expression so that the same result is generated when using the CASE search expression. Try to use as few WHEN clauses as possible.
+				SELECT name,
+				  CASE name
+			 	    WHEN 'English' THEN 'latin1'
+				    WHEN 'Italian' THEN 'latin1'
+				    WHEN 'French' THEN 'latin1'
+				    WHEN 'German' THEN 'latin1'
+				    WHEN 'Japanese' THEN 'utf8'
+				    WHEN 'Mandarin' THEN 'utf8'
+				    ELSE 'Unknown'
+				  END character_set
+				FROM language;
+
+11.2. Zmodyfikuj zapytanie w taki sposób, aby zbiór wynikowy składał się z jednego rekordu z pięcioma kolumnami (dla każdej oceny). Kolumnom nadaj nazwy G,PG,PG_13,R i NC_17.
+      Modify the query so that the result set consists of one record with five columns (one for each price). Name the columns G, PG, PG_13, R i NC_17.
+				SELECT rating, count(*)
+				FROM film
+				GROUP BY rating;
+				+--------+----------+
+				| rating | count(*) |
+				+--------+----------+
+				| G      |      178 |
+				| PG     |      194 |
+				| PG-13  |      223 |
+				| R      |      195 |
+				| NC-17  |      210 |
+				+--------+----------+
+
