@@ -483,3 +483,96 @@ REFERENCES customer (customer_id) ON DELETE RESTRICT;
 
 CREATE INDEX idx_payment01
 ON payment (payment_date, amount);
+
+------------------------------
+-- Rozdział 14 / Chapter 14
+------------------------------
+
+-- Zadanie / Exercise 14.1
+-- Utwórz definicję widoku umożliwiajacego wykonanie tego zapytania, które spowoduje wygenerowanie zamieszczonych danych wyjściowych: /
+-- Create a view definition to execute this query, which will generate the following output:
+--			SELECT title, category_name, first_name, last_name
+--			FROM film_ctgry_actor
+--			WHERE last_name = 'FAWCETT';
+--			+---------------------+---------------+------------+-----------+
+--			| title               | category_name | first_name | last_name |
+--			+---------------------+---------------+------------+-----------+
+--			| ACE GOLDFINGER      | Horror        | BOB        | FAWCETT   |
+--			| ADAPTATION HOLES    | Documentary   | BOB        | FAWCETT   |
+--			| CHINATOWN GLADIATOR | New           | BOB        | FAWCETT   |
+--			| CIRCUS YOUTH        | Children      | BOB        | FAWCETT   |
+--			| CONTROL ANTHEM      | Comedy        | BOB        | FAWCETT   |
+--			| DARES PLUTO         | Animation     | BOB        | FAWCETT   |
+--			| DARN FORRESTER      | Action        | BOB        | FAWCETT   |
+--			| DAZED PUNK          | Games         | BOB        | FAWCETT   |
+--			| DYNAMITE TARZAN     | Classics      | BOB        | FAWCETT   |
+--			| HATE HANDICAP       | Comedy        | BOB        | FAWCETT   |
+--			| HOMICIDE PEACH      | Family        | BOB        | FAWCETT   |
+--			| JACKET FRISCO       | Drama         | BOB        | FAWCETT   |
+--			| JUMANJI BLADE       | New           | BOB        | FAWCETT   |
+--			| LAWLESS VISION      | Animation     | BOB        | FAWCETT   |
+--			| LEATHERNECKS DWARFS | Travel        | BOB        | FAWCETT   |
+--			| OSCAR GOLD          | Animation     | BOB        | FAWCETT   |
+--			| PELICAN COMFORTS    | Documentary   | BOB        | FAWCETT   |
+--			| PERSONAL LADYBUGS   | Music         | BOB        | FAWCETT   |
+--			| RAGING AIRPLANE     | Sci-Fi        | BOB        | FAWCETT   |
+--			| RUN PACIFIC         | New           | BOB        | FAWCETT   |
+--			| RUNNER MADIGAN      | Music         | BOB        | FAWCETT   |
+--			| SADDLE ANTITRUST    | Comedy        | BOB        | FAWCETT   |
+--			| SCORPION APOLLO     | Drama         | BOB        | FAWCETT   |
+--			| SHAWSHANK BUBBLE    | Travel        | BOB        | FAWCETT   |
+--			| TAXI KICK           | Music         | BOB        | FAWCETT   |
+--			| BERETS AGENT        | Action        | JULIA      | FAWCETT   |
+--			| BOILED DARES        | Travel        | JULIA      | FAWCETT   |
+--			| CHISUM BEHAVIOR     | Family        | JULIA      | FAWCETT   |
+--			| CLOSER BANG         | Comedy        | JULIA      | FAWCETT   |
+--			| DAY UNFAITHFUL      | New           | JULIA      | FAWCETT   |
+--			| HOPE TOOTSIE        | Classics      | JULIA      | FAWCETT   |
+--			| LUKE MUMMY          | Animation     | JULIA      | FAWCETT   |
+--			| MULAN MOON          | Comedy        | JULIA      | FAWCETT   |
+--			| OPUS ICE            | Foreign       | JULIA      | FAWCETT   |
+--			| POLLOCK DELIVERANCE | Foreign       | JULIA      | FAWCETT   |
+--			| RIDGEMONT SUBMARINE | New           | JULIA      | FAWCETT   |
+--			| SHANGHAI TYCOON     | Travel        | JULIA      | FAWCETT   |
+--			| SHAWSHANK BUBBLE    | Travel        | JULIA      | FAWCETT   |
+--			| THEORY MERMAID      | Animation     | JULIA      | FAWCETT   |
+--			| WAIT CIDER          | Animation     | JULIA      | FAWCETT   |
+--			+---------------------+---------------+------------+-----------+
+--			40 rows in set (0.04 sec)
+
+CREATE VIEW film_ctgry_actor
+AS
+SELECT f.title,
+c.name category_name,
+a.first_name,
+a.last_name
+FROM film f
+INNER JOIN film_category fc
+ON f.film_id = fc.film_id
+INNER JOIN category c
+ON fc.category_id = c.category_id
+INNER JOIN film_actor fa
+ON fa.film_id = f.film_id
+INNER JOIN actor a
+ON fa.actor_id = a.actor_id;
+
+-- Zadanie / Exercise 14.2
+-- Menedżer wypożyczalni filmów chciałby otrzymać raport zawierający nazwy krajów i łączne kwoty płatności dokonanych przez pochodzących z nich klientów. Przygotuj definicję
+-- widoku pozwalającego wykonać zapytanie da tabeli country i wykorzystującego pozdapytanie skalarne do obliczenia wartości dla kolumny tot_payments. /
+-- The video rental manager would like to receive a report that lists the names of the countries and the total payments made by customers from those countries. Prepare a view
+-- definition to query the country table and use a scalar subquery to calculate the value for the tot_payments column.
+
+CREATE VIEW country_payments
+AS
+SELECT c.country,
+(SELECT sum(p.amount)
+FROM city ct
+INNER JOIN address a
+ON ct.city_id = a.city_id
+INNER JOIN customer cst
+ON a.address_id = cst.address_id
+INNER JOIN payment p
+ON cst.customer_id = p.customer_id
+WHERE ct.country_id = c.country_id
+) tot_payments
+FROM country c;
