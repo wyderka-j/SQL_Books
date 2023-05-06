@@ -455,3 +455,31 @@ last_activity_date = now()
 WHERE account_id = 789;
 
 COMMIT;
+
+------------------------------
+-- Rozdział 13 / Chapter 13
+------------------------------
+
+-- Zadanie / Exercise 13.1
+-- Utwórz zapytanie ALTER TABLE dla tabeli rental, aby nastąpiło wygenerowanie błędu, jeśli z tabeli customer zostanie usunięta wartość znajdująca się w kolumnie 
+-- rental.customer_id. /
+-- Create an ALTER TABLE query on the rental table so that an error is generated if the value in the rental.customer_id column is deleted from the customer table.
+
+ALTER TABLE rental
+ADD CONSTRAINT fk_rental_customer_id FOREIGN KEY (customer_id)
+REFERENCES customer (customer_id) ON DELETE RESTRICT;
+
+-- Zadanie / Exercise 13.2
+-- Dla tabeli payment utwórz indeks wielokolumnowy, który będzie mógł być później używany w obu przedstawionych tutaj zapytaniach. /
+-- For the payment table, create a multi-column index that can later be used in both queries shown here.
+--			SELECT customer_id, payment_date, amount
+--			FROM payment
+--			WHERE payment_date > cast('2019-12-31 23:59:59' AS datetime);
+--
+--			SELECT customer_id, payment_date, amount
+--			FROM payment
+--			WHERE payment_date > cast('2019-12-31 23:59:59' AS datetime)
+--			AND amount < 5;
+
+CREATE INDEX idx_payment01
+ON payment (payment_date, amount);
