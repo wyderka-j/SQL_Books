@@ -260,3 +260,7 @@ Zadania / Exercises
       The video rental manager would like to receive a report that lists the names of the countries and the total payments made by customers from those countries. Prepare a
       view definition to query the country table and use a scalar subquery to calculate the value for the tot_payments column.
 
+15.1. Utwórz zapytanie wyświetlające wszystkie indeksy w schemacie Sakila. Dane wyjściowe powinny zawierać nazwy tabel. /
+      Create a query that lists all indexes in Sakila's schema. The output should contain table names.
+
+
