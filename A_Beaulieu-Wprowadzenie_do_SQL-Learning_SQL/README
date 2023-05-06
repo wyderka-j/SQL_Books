@@ -51,13 +51,13 @@ Zadania / Exercises
 
 5.1. Uzupełnij brakujące fragmenty kodu (oznaczone za pomocą <#>) w zapytaniu, które powoduje wygenerowanie pokazanych rekordów. /
      Fill in the blanks (denoted by <#> ) for the following query to obtain the results that follow.
-			     SELECT c.first_name, c.last_name, a.address, ct.city
-     		     FROM customer c 
+		     		SELECT c.first_name, c.last_name, a.address, ct.city
+     		     		FROM customer c 
 			          INNER JOIN address <1>
 			          ON c.address_id = a.address_id
 			          INNER JOIN city ct 
 			          ON a.city_id = <2>
- 		     	WHERE a.district = 'California'
+ 		     		WHERE a.district = 'California'
                +------------+-----------+------------------------+----------------+
                | first_name | last_name | address                | city           |
                +------------+-----------+------------------------+----------------+
@@ -189,4 +189,17 @@ Zadania / Exercises
 	|        789 |            75 | 2019-06-22         |				|   1002 | 2019-06-01 |        789 | C           |     75 |
 	+------------+---------------+--------------------+				+--------+------------+------------+-------------+--------+
 
+13.1. Utwórz zapytanie ALTER TABLE dla tabeli rental, aby nastąpiło wygenerowanie błędu, jeśli z tabeli customer zostanie usunięta wartość znajdująca się w kolumnie rental.customer_id.
+      Create an ALTER TABLE query on the rental table so that an error is generated if the value in the rental.customer_id column is deleted from the customer table.
+
+13.2. Dla tabeli payment utwórz indeks wielokolumnowy, który będzie mógł być później używany w obu przedstawionych tutaj zapytaniach. /
+      For the payment table, create a multi-column index that can later be used in both queries shown here.
+			SELECT customer_id, payment_date, amount
+			FROM payment
+			WHERE payment_date > cast('2019-12-31 23:59:59' AS datetime);
+
+			SELECT customer_id, payment_date, amount
+			FROM payment
+			WHERE payment_date > cast('2019-12-31 23:59:59' AS datetime)
+			AND amount < 5;
 
