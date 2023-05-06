@@ -576,3 +576,15 @@ ON cst.customer_id = p.customer_id
 WHERE ct.country_id = c.country_id
 ) tot_payments
 FROM country c;
+
+------------------------------
+-- Rozdział 15 / Chapter 15
+------------------------------
+
+-- Zadanie / Exercise 15.1
+-- Utwórz zapytanie wyświetlające wszystkie indeksy w schemacie Sakila. Dane wyjściowe powinny zawierać nazwy tabel. /
+-- Create a query that lists all indexes in Sakila's schema. The output should contain table names.
+
+SELECT DISTINCT table_name, index_name
+FROM information_schema.statistics
+WHERE table_schema = 'sakila';
