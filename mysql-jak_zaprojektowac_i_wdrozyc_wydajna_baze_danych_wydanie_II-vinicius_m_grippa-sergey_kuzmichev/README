@@ -11,3 +11,12 @@ W tym repozytorium udostępniam rozwiązania omawianych zagadnień poruszanych w
 Rozdział 1. Instalowanie bazy danych MySQL
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 W rozdziale zostały omówione rozwidlenia MySQL, instalacja MySQL na różnych systemach, jak sprawdzić zawartość katalogu MySQL.
+
+Rozdział 2. Modelowanie i projektowanie bazy danych
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Rozdział teoretyczny omawiający proces projektowania bazy danych, model relacji między encjami i normalizacje bazy danych.
+
+Bazy danych które będą wykorzystywane:
+Sakila    https://downloads.mysql.com/docs/sakila-db.tar.gz
+World     https://downloads.mysql.com/docs/world-db.tar.gz 
+Employee  https://github.com/datacharmer/test_db.git 
