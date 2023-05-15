@@ -1,0 +1,21 @@
+"SQL. Zapytania i techniki dla bazodanowców. Receptury. Wydanie II" Autorzy: Anthony Molinaro, Robert de Graaf, Wydawnictwo: Helion 
+Tytuł oryginału: SQL Cookbook: Query Solutions and Techniques for All SQL Users, 2nd Edition
+https://helion.pl/ksiazki/sql-zapytania-i-techniki-dla-bazodanowcow-receptury-wydanie-ii-anthony-molinaro-robert-de-graaf,sqlzr2.htm#section7_shift
+
+W tym repozytorium udostępniam rozwiązania omawianych zagadnień poruszanych w książce.
+
+Rozdział 1. Odczytywanie rekordów
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.1. Odczytywanie wszystkich wierszy i kolumn tabeli
+1.2. Odczytywanie podzbioru wierszy tabeli
+1.3. Odnajdywanie wierszy spełniających wiele warunków
+1.4. Odczytywanie podzbioru kolumn tabeli
+1.5. Definiowanie sensownych nazw kolumn
+1.6. Odwołania do aliasów kolumn w klauzuli WHERE
+1.7. Konkatenacja wartości kolumn
+1.8. Stosowanie logiki warunkowej w wyrażeniu SELECT
+1.9. Ograniczanie liczby zwracanych wierszy
+1.10. Zwracanie n losowych rekordów tabeli
+1.11. Odnajdywanie wartości pustych (NULL)
+1.12. Przekształcanie wartości pustych w rzeczywiste
+1.13. Poszukiwanie wzorców
