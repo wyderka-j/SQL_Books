@@ -145,7 +145,9 @@ ON city.country_id = country.country_id
 WHERE country.country_id = 49
 ORDER BY country, city;
 
--- Zapytanie INSERT:
+-- Zapytanie INSERT
+-- -----------------
+
 -- podstawy zapytania INSERT
 
 SHOW COLUMNS FROM language;
@@ -187,6 +189,7 @@ INSERT INTO country SET country_id = NULL,
 country = 'Bahamas', last_update = NOW();
 
 -- Zapytanie DELETE
+-- -----------------
 
 -- podstawy pracy z zapytaniem DELETE
 
@@ -215,6 +218,8 @@ DELETE FROM payment ORDER BY customer_id LIMIT 10000;
 TRUNCATE TABLE payment;
 
 -- Zapytanie UPDATE
+-- -----------------
+
 -- przykłady
 
 -- zwiększenie wszystkich wartości o 10%
@@ -230,6 +235,7 @@ WHERE first_name LIKE 'PENELOPE'
 AND last_name LIKE 'GUINESS';
 
 -- Przeglądanie baz danych i tabel za pomocą zapytań SHOW i polecenia mysqlshow
+-- ----------------------------------------------------------------------------
 
 -- lista dostępnych baz
 SHOW DATABASES;
