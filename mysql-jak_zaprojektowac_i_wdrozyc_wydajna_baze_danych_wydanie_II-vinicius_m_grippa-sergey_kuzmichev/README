@@ -30,8 +30,8 @@ Rozdział 3. Podstawy języka SQL
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 W rozdziale zostały omówione poniższe zagadnienia:
 - Używanie bazy danych sakila
-- Zapytania SELECT i podstawowe techniki wykonywania zapytań: zapytania SELECT dotyczące pojedynczej tabeli; wybór kolumn; wybieranie rekordów za pomocą klauzuli WHERE;  
-  klauzula ORDER BY; klauzula LIMIT; złączenie dwóch tabel
+- Zapytania SELECT i podstawowe techniki wykonywania zapytań: zapytania SELECT dotyczące pojedynczej tabeli; wybór kolumn; wybieranie rekordów za pomocą klauzuli
+  WHERE; klauzula ORDER BY; klauzula LIMIT; złączenie dwóch tabel
 - Zapytanie INSERT: podstawy zapytania INSERT; składnie alternatywne
 - Zapytanie DELETE: podstawy pracy z zapytaniem DELETE; używanie klauzuli WHERE, ORDER BY, LIMIT; usuwanie wszystkich rekordów za pomocą zapytania TRUNCATE
 - Zapytanie UPDATE: przykłady; używanie klauzul WHERE, ORDER BY, LIMIT
