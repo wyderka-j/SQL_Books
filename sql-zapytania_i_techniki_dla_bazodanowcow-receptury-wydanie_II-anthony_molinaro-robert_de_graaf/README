@@ -19,3 +19,12 @@ Rozdział 1. Odczytywanie rekordów
 1.11. Odnajdywanie wartości pustych (NULL)
 1.12. Przekształcanie wartości pustych w rzeczywiste
 1.13. Poszukiwanie wzorców
+
+Rozdział 2. Sortowanie wyników zapytań
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.1. Zwracanie wyników zapytań posortowanych w określonym porządku
+2.2. Sortowanie zbioru wynikowego według zawartości wielu pól
+2.3. Sortowanie według podłańcuchów
+2.4. Sortowanie wymieszanych danych alfanumerycznych
+2.5. Obsługa wartości pustych w zapytaniach sortujących
+2.6. Sortowanie według klucza zależnego od danych
