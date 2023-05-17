@@ -36,3 +36,12 @@ W rozdziale zostały omówione poniższe zagadnienia:
 - Zapytanie DELETE: podstawy pracy z zapytaniem DELETE; używanie klauzuli WHERE, ORDER BY, LIMIT; usuwanie wszystkich rekordów za pomocą zapytania TRUNCATE
 - Zapytanie UPDATE: przykłady; używanie klauzul WHERE, ORDER BY, LIMIT
 - Przeglądanie baz danych i tabel za pomocą zapytań SHOW i polecenia mysqlshow
+
+Rozdział 4. Praca ze strukturami bazy danych
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+W rozdziale zostały omówione poniższe zagadnienia:
+- Tworzenie i używanie baz danych
+- Tworzenie tabeli: Podstawy; Kodowanie znaków i ich kolejność; Inne funkcjonalności; Typy kolumn; Klucze i indeksy; Funkcjonalność AUTO_INCREMENT 
+- Modyfikowanie struktury: Dodawanie, usuwanie i modyfikowanie kolumn; Dodawanie, usuwanie i modyfikowanie indeksów; Zmienianie nazwy tabeli i modyfikowanie innych
+  struktur 
+- Usuwanie struktur: Usuwanie bazy danych; Usuwanie tabel 
