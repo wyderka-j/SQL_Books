@@ -28,3 +28,18 @@ Rozdział 2. Sortowanie wyników zapytań
 2.4. Sortowanie wymieszanych danych alfanumerycznych
 2.5. Obsługa wartości pustych w zapytaniach sortujących
 2.6. Sortowanie według klucza zależnego od danych
+
+Rozdział 3. Praca z wieloma tabelami
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.1. Umieszczanie jednego zbioru wierszy ponad drugim
+3.2. Łączenie wzajemnie powiązanych wierszy
+3.3. Odnajdywanie wspólnych wierszy pomiędzy dwiema tabelami
+3.4. Uzyskiwanie z jednej tabeli tylko tych wartości, które nie występują w innej tabeli
+3.5. Uzyskiwanie z jednej tabeli tylko tych wierszy, dla których nie istnieją odpowiedniki w innej tabeli
+3.6. Dodawanie złączeń do zapytań bez konieczności modyfikowania pozostałych, już istniejących złączeń
+3.7. Określanie, czy dwie tabele zawierają te same dane
+3.8. Identyfikowanie i eliminowanie iloczynów kartezjańskich
+3.9. Stosowanie złączeń w zapytaniach wykorzystujących funkcje agregujące
+3.10. Stosowanie złączeń zewnętrznych w zapytaniach wykorzystujących funkcje agregujące
+3.11. Zwracanie brakujących danych z wielu tabel
+3.12. Wykorzystywanie wartości NULL w operacjach i porównaniach
