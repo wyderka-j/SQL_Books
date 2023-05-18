@@ -3,6 +3,7 @@ Tytuł oryginału: SQL Cookbook: Query Solutions and Techniques for All SQL User
 https://helion.pl/ksiazki/sql-zapytania-i-techniki-dla-bazodanowcow-receptury-wydanie-ii-anthony-molinaro-robert-de-graaf,sqlzr2.htm#section7_shift
 
 W tym repozytorium udostępniam rozwiązania omawianych zagadnień poruszanych w książce.
+Projekt został wykonany przy użyciu Microsoft SQL Server.
 
 Rozdział 1. Odczytywanie rekordów
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
