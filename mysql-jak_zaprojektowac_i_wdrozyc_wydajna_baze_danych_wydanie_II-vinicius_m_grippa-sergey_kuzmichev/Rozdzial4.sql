@@ -247,3 +247,100 @@ EXPLAIN SELECT * FROM customer_mod WHERE
 first_name = 'Rose' AND
 last_name = 'Williams' AND
 email = 'rose.w@nonexistent.edu';
+
+-- Funkcjonalność AUTO_INCREMENT 
+CREATE TABLE actor (
+  actor_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(45) NOT NULL,
+  last_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY  (actor_id)
+);
+
+-- wstawianie rekordów bez użycia kolumny axtor_id
+INSERT INTO actor VALUES (NULL, 'Alexander', 'Kaidanovsky');
+INSERT INTO actor VALUES (NULL, 'Anatoly', 'Solonitsyn');
+INSERT INTO actor VALUES (NULL, 'Nikolai', 'Grinko');
+
+SELECT * FROM actor;
+
+-- przykładowa tabela
+CREATE TABLE count (counter INT AUTO_INCREMENT KEY);
+
+INSERT INTO count VALUES (), (), (), (), (), ();
+
+SELECT * FROM count;
+
+-- usinięcie dwóch rekordów i dodanie kolejnych sześciu
+DELETE FROM count WHERE counter >4;
+
+INSERT INTO count VALUES (), (), (), (), (), ();
+
+SELECT * FROM count;
+
+-- wyzerowanie licznika
+TRUNCATE TABLE count;
+
+INSERT INTO count VALUES (), (), (), (), (), ();
+
+SELECT * FROM count;
+
+-- -- Modyfikowanie struktury
+
+-- Dodawanie, usuwanie i modyfikowanie kolumn
+
+-- zmiana nazwy kolumny
+ALTER TABLE language RENAME COLUMN last_update TO last_updated_time;
+-- sprawdzenie
+SHOW COLUMNS FROM language;
+-- zapytanie alter table ze słowem kluczowym change
+ALTER TABLE language CHANGE last_update last_updated_time TIMESTAMP
+NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+-- modyfikacja typów i klaulul kolumny
+ALTER TABLE language MODIFY name CHAR(20) DEFAULT 'n/a';
+-- modyfikacja typów i klaulul kolumny ze słowem change
+ALTER TABLE language CHANGE name name CHAR(20) DEFAULT 'n/a';
+-- dadanie kolejnej kolumny
+ALTER TABLE language ADD native_name CHAR(20);
+-- jeśli kolumna ma się pojawić na początku
+ALTER TABLE language ADD native_name CHAR(20) FIRST;
+-- jeśli kolumna ma się pojawić w konkretnym położeniu
+ALTER TABLE language ADD native_name CHAR(20) AFTER name;
+-- sprawdzenie
+SHOW COLUMNS FROM language;
+-- usunięcie kolumny
+ALTER TABLE language DROP native_name;
+-- wiele zmian za pomocą jednego zapytania
+ALTER TABLE language ADD native_name CHAR(255), MODIFY name CHAR(255);
+
+-- Dodawanie, usuwanie i modyfikowanie indeksów
+
+-- dodanie indeksu do już istniejącej tabeli
+ALTER TABLE language ADD INDEX idx_name (name);
+-- klucz podstawowy dla tabeli już po jej utworzeniu
+CREATE TABLE no_pk (id INT);
+INSERT INTO no_pk VALUES (1), (2), (3);
+ALTER TABLE no_pk ADD PRIMARY KEY (id);
+-- usunięcie indeksu
+ALTER TABLE language DROP INDEX idx_name;
+-- usunięcie klucza podstawowego
+ALTER TABLE no_pk DROP PRIMARY KEY;
+-- grupowanie operacji
+ALTER TABLE language DROP PRIMARY KEY,
+ADD PRIMARY KEY (language_id, name);
+-- indeks zawiera tylko pierwsze 10 znaków kolumny
+ALTER TABLE language DROP INDEX idx_name,
+ADD INDEX idx_name (name(10));
+
+-- Zmienianie nazwy tabeli i modyfikowanie innych struktur 
+ALTER TABLE language RENAME TO languages;
+-- krótsza notacja
+RENAME TABLE languages TO language;
+
+-- --  Usuwanie struktur
+
+-- Usuwanie bazy danych
+DROP DATABASE sakila;
+
+-- Usuwanie tabel 
+CREATE TABLE temp (id SERIAL PRIMARY KEY);
+DROP TABLE IF EXISTS temp;
