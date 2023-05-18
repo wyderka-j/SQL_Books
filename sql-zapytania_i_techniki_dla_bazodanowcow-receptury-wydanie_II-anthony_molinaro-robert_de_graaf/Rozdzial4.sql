@@ -1,31 +1,31 @@
--- Rozdzia³ 4. Wstawianie, aktualizowanie i usuwanie
+-- RozdziaÅ‚ 4. Wstawianie, aktualizowanie i usuwanie
 
--- 4.1. Wstawianie nowych rekordów
--- Problem: Chcemy wstawiæ nowy rekord do istniej¹cej tabeli. Przyk³adowo, chcemy wstawiæ nowy wiersz do tabeli DEPT. Nowy rekord powinien zawieraæ w kolumnie DEPTNO
--- wartoœæ 50, w kolumnie DNAME wartoœæ PROGRAMMING i w kolumnie LOC wartoœæ BALTIMORE.
+-- 4.1. Wstawianie nowych rekordÃ³w
+-- Problem: Chcemy wstawiÄ‡ nowy rekord do istniejÄ…cej tabeli. PrzykÅ‚adowo, chcemy wstawiÄ‡ nowy wiersz do tabeli DEPT. Nowy rekord powinien zawieraÄ‡ w kolumnie DEPTNO
+-- wartoÅ›Ä‡ 50, w kolumnie DNAME wartoÅ›Ä‡ PROGRAMMING i w kolumnie LOC wartoÅ›Ä‡ BALTIMORE.
 
 INSERT INTO dept (deptno, dname, loc)
 VALUES (50, 'PROGRAMMING', 'BALTOMORE');
 
--- 4.2. Wstawianie wartoœci domyœlnych
--- Problem: Chcemy, aby w okreœlonej kolumnie naszej tabwli by³y wstawiane wartoœci domyœlne zawsze  wtedy, gdy u¿ytkownik nie zdefiniuje konkretnej wartoœci podczas
--- dodawania wiersza. Przeanalizujmy nastêpuj¹c¹ tabelê:
+-- 4.2. Wstawianie wartoÅ›ci domyÅ›lnych
+-- Problem: Chcemy, aby w okreÅ›lonej kolumnie naszej tabwli byÅ‚y wstawiane wartoÅ›ci domyÅ›lne zawsze  wtedy, gdy uÅ¼ytkownik nie zdefiniuje konkretnej wartoÅ›ci podczas
+-- dodawania wiersza. Przeanalizujmy nastÄ™pujÄ…cÄ… tabelÄ™:
 --create table D (id integer default 0)
--- Chcemy, aby w kolumnie ID by³a wstawiana wartoœæ zerowa bez koniecznoœci definiowania tej wartoœci wprost na liœcie po s³owie kluczowym VALUES w wyra¿eniu INSERT. 
+-- Chcemy, aby w kolumnie ID byÅ‚a wstawiana wartoÅ›Ä‡ zerowa bez koniecznoÅ›ci definiowania tej wartoÅ›ci wprost na liÅ›cie po sÅ‚owie kluczowym VALUES w wyraÅ¼eniu INSERT. 
 
 INSERT INTO D DEFAULT VALUES;
 
--- 4.3. Zastêpowanie wartoœci domyœlnych wartoœci¹ NULL
--- Problem: Wstawiamy wiersz do tabeli zawieraj¹cej kolumnê, dla której zdefiniowano wartoœæ domyœln¹, ale chcemy umieœciæ w³aœnie w tej kolumnie wartoœæ NULL. 
--- Przeanalizujmy nastêpuj¹c¹ tabelê:
+-- 4.3. ZastÄ™powanie wartoÅ›ci domyÅ›lnych wartoÅ›ciÄ… NULL
+-- Problem: Wstawiamy wiersz do tabeli zawierajÄ…cej kolumnÄ™, dla ktÃ³rej zdefiniowano wartoÅ›Ä‡ domyÅ›lnÄ…, ale chcemy umieÅ›ciÄ‡ wÅ‚aÅ›nie w tej kolumnie wartoÅ›Ä‡ NULL. 
+-- Przeanalizujmy nastÄ™pujÄ…cÄ… tabelÄ™:
 --create table D (id integer default 0, foo varchar(10))
--- Chcemy wstawiæ do tabeli D nowy wiersz zawieraj¹cy wartoœæ NULL w kolumnie ID.
+-- Chcemy wstawiÄ‡ do tabeli D nowy wiersz zawierajÄ…cy wartoÅ›Ä‡ NULL w kolumnie ID.
 
 INSERT INTO D (id, foo) VALUES (NULL, 'Brighten');
 
--- 4.4. Kopiowanie wierszy pomiêdzy tabelami
--- Problem: Chcemy skopiowaæ wiersze z jednej tabeli do drugiej za pomoc¹ pojedynczego zapytania. Przyk³adowo, chcemy skopiowaæ wiersze z tabeli dept do tabeli dept_east.
--- Przyjmijmy, ¿e tabela dept_east zosta³a utworzona, jej struktura i typ kolumn) jest identyczna ze struktur¹ tabeli dept i obecnie nie zawiera ¿adnych danych.
+-- 4.4. Kopiowanie wierszy pomiÄ™dzy tabelami
+-- Problem: Chcemy skopiowaÄ‡ wiersze z jednej tabeli do drugiej za pomocÄ… pojedynczego zapytania. Chcemy skopiowaÄ‡ wiersze z tabeli dept do tabeli dept_east.
+-- Przyjmijmy, Å¼e tabela dept_east zostaÅ‚a utworzona, jej struktura i typ kolumn) jest identyczna ze strukturÄ… tabeli dept i obecnie nie zawiera Å¼adnych danych.
 
 INSERT INTO dept_east (deptno, dname, loc)
 SELECT deptno, dname, loc
@@ -33,33 +33,33 @@ FROM dept
 WHERE loc IN ('NEW YORK', 'BOSTON');
 
 -- 4.5. Kopiowanie definicji tabel
--- Problem: Chcemy stworzyæ now¹ tabelê, która bêdzie siê sk³ada³a z takich samych kolumn jak tabela ju¿ istniej¹ca. Przyjmijmy, ¿e chcemy stworzyæ kopiê tabeli dept
--- nazwan¹ dept_2. Nie chcemy kopiowaæ wierszy tabeli- naszym celem jest wy³¹cznie powielenie struktury kolumn tej tabeli.
+-- Problem: Chcemy stworzyÄ‡ nowÄ… tabelÄ™, ktÃ³ra bÄ™dzie siÄ™ skÅ‚adaÅ‚a z takich samych kolumn jak tabela juÅ¼ istniejÄ…ca. Przyjmijmy, Å¼e chcemy stworzyÄ‡ kopiÄ™ tabeli dept
+-- nazwanÄ… dept_2. Nie chcemy kopiowaÄ‡ wierszy tabeli- naszym celem jest wyÅ‚Ä…cznie powielenie struktury kolumn tej tabeli.
 
 SELECT *
 INTO dept_2
 FROM dept
 WHERE 1 = 0;
 
--- 4.7. Blokowanie mo¿liwoœci wstawiania wartoœci do wybranych kolumn
--- Problem: Chcemy uniemo¿liwiæ u¿ytkownikow lub Ÿle napisanym aplikacjom wstawianie wartoœci do okreœlonych kolumn tabeli. Chcemy zazwoliæ ptogramom zewnêtrznym na
+-- 4.7. Blokowanie moÅ¼liwoÅ›ci wstawiania wartoÅ›ci do wybranych kolumn
+-- Problem: Chcemy uniemoÅ¼liwiÄ‡ uÅ¼ytkownikow lub Åºle napisanym aplikacjom wstawianie wartoÅ›ci do okreÅ›lonych kolumn tabeli. Chcemy zazwoliÄ‡ ptogramom zewnÄ™trznym na
 -- wstawianie nowych wierszy do tabeli emp, ale tylko do kolumn empno, ename i job.
 
 CREATE VIEW new_emps AS
 SELECT empno, ename, job
 FROM emp;
 
--- 4.8. Modyfikowanie rekordów tabeli
--- Problem: Chcemy zmodyfikowaæ wartoœci sk³adowane w wybranej czêœci lub we wszystkich wierszach jakiejœ tabeli. Chcemy podnieœæ pensje wszystkich pracowników dzia³u
+-- 4.8. Modyfikowanie rekordÃ³w tabeli
+-- Problem: Chcemy zmodyfikowaÄ‡ wartoÅ›ci skÅ‚adowane w wybranej czÄ™Å›ci lub we wszystkich wierszach jakiejÅ› tabeli. Chcemy podnieÅ›Ä‡ pensje wszystkich pracownikÃ³w dziaÅ‚u
 -- dwudziestego o 10 procent.
 
 UPDATE emp
 SET sal = sal * 1.10
 WHERE deptno = 20;
 
--- 4.9. Aktualizowanie danych pod warunkiem istnienia w tabeli okreœlonych wierszy
--- Problem: Chcemy zaktualizowaæ wiersze jednej tabeli pod warunkiem istnienia odpowiadaj¹cych im wierszy w innej tabeli. Chcemy zwiêkszyæ o 20% pensje (w tabeli emp)
--- wszystkich pracowników, którzy s¹ wymienieni w tabeli emp_bonus.
+-- 4.9. Aktualizowanie danych pod warunkiem istnienia w tabeli okreÅ›lonych wierszy
+-- Problem: Chcemy zaktualizowaÄ‡ wiersze jednej tabeli pod warunkiem istnienia odpowiadajÄ…cych im wierszy w innej tabeli. Chcemy zwiÄ™kszyÄ‡ o 20% pensje (w tabeli emp)
+-- wszystkich pracownikÃ³w, ktÃ³rzy sÄ… wymienieni w tabeli emp_bonus.
 --select empno, ename
 --from emp_bonus;
 --EMPNO	ENAME
@@ -71,15 +71,15 @@ UPDATE emp
 SET sal = sal * 1.20
 WHERE empno IN (SELECT empno FROM emp_bonus);
 
--- 4.10. Aktualizowanie wartoœci wed³ug zawartoœci innej tabeli
--- Problem: chcemy zaktualizowaæ wiersze jednej z tabel za pomoc¹ wartoœci sk³adowanych w innej tabeli. Dysponujemy tabel¹ new_sal, w której s¹ sk³adowane nowe wysokoœci
--- wynagrodzeñ wybranej grupy pracowników.
+-- 4.10. Aktualizowanie wartoÅ›ci wedÅ‚ug zawartoÅ›ci innej tabeli
+-- Problem: chcemy zaktualizowaÄ‡ wiersze jednej z tabel za pomocÄ… wartoÅ›ci skÅ‚adowanych w innej tabeli. Dysponujemy tabelÄ… new_sal, w ktÃ³rej sÄ… skÅ‚adowane nowe 
+-- wysokoÅ›ci wynagrodzeÅ„ wybranej grupy pracownikÃ³w.
 --select * from new_sal
 --DEPTNO	SAL
 --10		4000
--- Chcemy zaktualizowaæ reprezentowan¹ w tabeli emp wysokoœæ wynagrodzeñ i prowizji wyp³acanych niektórym pracownikom wed³ug wartoœci reprezentowanych w tabeli new_sal
--- jeœli wartoœæ koluny emp.deptno jest równa wartoœci kolumny new_sal.deptno nale¿y zaktualizowaæ odpowiedni wiersz tabeli emp, przypisuj¹c kolumnie emp.sal wartoœæ 
--- sk³adowan¹ w kolumnie new_sal.sal i przypisuj¹c kolumnie emp.com 50 procent wartoœci sk³adowanej w kolumnie new_sal.sal.
+-- Chcemy zaktualizowaÄ‡ reprezentowanÄ… w tabeli emp wysokoÅ›Ä‡ wynagrodzeÅ„ i prowizji wypÅ‚acanych niektÃ³rym pracownikom wedÅ‚ug wartoÅ›ci reprezentowanych w tabeli new_sal
+-- jeÅ›li wartoÅ›Ä‡ koluny emp.deptno jest rÃ³wna wartoÅ›ci kolumny new_sal.deptno naleÅ¼y zaktualizowaÄ‡ odpowiedni wiersz tabeli emp, przypisujÄ…c kolumnie emp.sal wartoÅ›Ä‡ 
+-- skÅ‚adowanÄ… w kolumnie new_sal.sal i przypisujÄ…c kolumnie emp.com 50 procent wartoÅ›ci skÅ‚adowanej w kolumnie new_sal.sal.
 
 UPDATE e
 SET e.sal = ns.sal,
@@ -88,15 +88,15 @@ FROM emp e,
 	new_sal ns
 WHERE ns.deptno = e.deptno;
 
--- 4.11. Scalanie rekordów
--- Problem: Chcemy uzale¿niæ operacje wstawiania, aktualizowania lub usuwania rekordów tabeli od tego, czy dana tabela zawiera odpowiednie rekordy (jeœli wskazany
--- rekord instnieje, nale¿y go zaktualizowaæ, jeœli nie, nale¿y wstawiæ nowy rekord; jeœli po aktualizacji wiersz nie spe³nia okreœlonych kryteriów, nale¿y go usun¹æ)
--- Chcemy zmodyfikowaæc tabelê emp_commission w nastêpuj¹cy sposób
--- Jeœli któryœ z pracowników w tabeli emp_commission jest reprezentowany tak¿e w talebi emp, nale¿y ustaliæ prowizjê wyp³acan¹ temu pracownikowi (w kolumnie comm) na
+-- 4.11. Scalanie rekordÃ³w
+-- Problem: Chcemy uzaleÅ¼niÄ‡ operacje wstawiania, aktualizowania lub usuwania rekordÃ³w tabeli od tego, czy dana tabela zawiera odpowiednie rekordy (jeÅ›li wskazany
+-- rekord instnieje, naleÅ¼y go zaktualizowaÄ‡, jeÅ›li nie, naleÅ¼y wstawiÄ‡ nowy rekord; jeÅ›li po aktualizacji wiersz nie speÅ‚nia okreÅ›lonych kryteriÃ³w, naleÅ¼y go usunÄ…Ä‡)
+-- Chcemy zmodyfikowaÄ‡c tabelÄ™ emp_commission w nastÄ™pujÄ…cy sposÃ³b
+-- JeÅ›li ktÃ³ryÅ› z pracownikÃ³w w tabeli emp_commission jest reprezentowany takÅ¼e w talebi emp, naleÅ¼y ustaliÄ‡ prowizjÄ™ wypÅ‚acanÄ… temu pracownikowi (w kolumnie comm) na
 -- poziomie 1000.
--- Dla ka¿dego pracownika zakwalifikowanego jako potencjalnego kandydata do aktualizacji wysokoœci prowizji comm do 1000 nale¿y sprawdziæ, czy jego podstawowe 
--- wynagrodzenie jest mniejsze od 2000- jeœli tak, nale¿y go usun¹æ
--- W przeciwnym razie nale¿y wstawiæ odpowiednie wartoœci kolumn empno, ename i deptno z tabeli emp do nowego wiersza tabeli emp_commission
+-- Dla kaÅ¼dego pracownika zakwalifikowanego jako potencjalnego kandydata do aktualizacji wysokoÅ›ci prowizji comm do 1000 naleÅ¼y sprawdziÄ‡, czy jego podstawowe 
+-- wynagrodzenie jest mniejsze od 2000- jeÅ›li tak, naleÅ¼y go usunÄ…Ä‡
+-- W przeciwnym razie naleÅ¼y wstawiÄ‡ odpowiednie wartoÅ›ci kolumn empno, ename i deptno z tabeli emp do nowego wiersza tabeli emp_commission
 --select deptno, empno, ename, comm
 --from emp_commission
 --order by 1
@@ -115,32 +115,32 @@ WHEN NOT MATCHED THEN
 	INSERT (ec.empno, ec.ename, ec.deptno, ec.comm)
 	VALUES (emp.empno, emp.ename, emp.deptno, emp.comm);
 
--- 4.12. Usuwanie wszystkich rekordów z tabeli
--- Problem: Chcemy usun¹æ wszystkie rekordy z jakiejœ tabeli.
+-- 4.12. Usuwanie wszystkich rekordÃ³w z tabeli
+-- Problem: Chcemy usunÄ…Ä‡ wszystkie rekordy z jakiejÅ› tabeli.
 
 DELETE FROM emp;
 
--- 4.13. Usuwanie rekordów spe³niaj¹cych okreœlone kryteria
--- Problem: Chcemy usun¹æ z tabeli rekordy spe³niaj¹ce pewne kryteria.
+-- 4.13. Usuwanie rekordÃ³w speÅ‚niajÄ…cych okreÅ›lone kryteria
+-- Problem: Chcemy usunÄ…Ä‡ z tabeli rekordy speÅ‚niajÄ…ce pewne kryteria.
 
 DELETE FROM emp WHERE deptno = 10;
 
--- 4.14. Usuwanie pojedynczych rekordów
--- Problem: Chcemy usun¹æ z tabeli tylko jeden rekord.
+-- 4.14. Usuwanie pojedynczych rekordÃ³w
+-- Problem: Chcemy usunÄ…Ä‡ z tabeli tylko jeden rekord.
 
 DELETE FROM emp WHERE empno = 7782;
 
--- 4.15. Usuwanie wierszy naruszaj¹cych integralnoœæ referencyjn¹
--- Problem: Chcemy usun¹æ z tabeli rekordy, które odwo³uj¹ siê do nieistniej¹cych rekordów w innej tabeli. Przypuœæmy ¿e czêœæ pracowników b³êdnie przypisano do 
--- nieistniej¹cych dzia³ów firmy.
+-- 4.15. Usuwanie wierszy naruszajÄ…cych integralnoÅ›Ä‡ referencyjnÄ…
+-- Problem: Chcemy usunÄ…Ä‡ z tabeli rekordy, ktÃ³re odwoÅ‚ujÄ… siÄ™ do nieistniejÄ…cych rekordÃ³w w innej tabeli. PrzypuÅ›Ä‡my Å¼e czÄ™Å›Ä‡ pracownikÃ³w bÅ‚Ä™dnie przypisano do 
+-- nieistniejÄ…cych dziaÅ‚Ã³w firmy.
 
 DELETE FROM emp
 WHERE NOT EXISTS (
 	SELECT * FROM dept
 	WHERE dept.deptno = emp.deptno;
 
--- 4.16. Usuwanie powtarzaj¹cych siê rekordów
--- Problem: Chcemy usun¹æ z tabeli powtarzaj¹ce siê rekordy
+-- 4.16. Usuwanie powtarzajÄ…cych siÄ™ rekordÃ³w
+-- Problem: Chcemy usunÄ…Ä‡ z tabeli powtarzajÄ…ce siÄ™ rekordy
 -- create table dupes (id integer, name varchar(10))
 --insert into dupes values (1, 'NAPOLEON')
 --insert into dupes values (2, 'DYNAMITE')
@@ -153,8 +153,8 @@ WHERE NOT EXISTS (
 DELETE FROM dupes
 WHERE id NOT IN (SELECT MIN(id) FROM dupes GROUP BY name);
 
--- 4.17. Usuwanie rekordów na podstawie danych z innej tabeli
--- Problem: Chcemy usun¹æ z tabeli tylko te rekordy, na które wska¿a dane pozyskane z innej tabeli. 
+-- 4.17. Usuwanie rekordÃ³w na podstawie danych z innej tabeli
+-- Problem: Chcemy usunÄ…Ä‡ z tabeli tylko te rekordy, na ktÃ³re wskaÅ¼a dane pozyskane z innej tabeli. 
 --create table dept_acciedents
 --(deptno integer,
 --accident_name varchar(20));
@@ -164,7 +164,7 @@ WHERE id NOT IN (SELECT MIN(id) FROM dupes GROUP BY name);
 --insert into dept_acciedents values (20, 'FIRE')
 --insert into dept_acciedents values (20, 'FLOOD')
 --insert into dept_acciedents values (30, 'BRUISED GLUTE')
--- Chcemy usun¹æ z tabeli emp rekordy reprezentuj¹ce pracowników zatrudnionych w dziale, w którym mia³y miejsce co najmniej trzy wypadki.
+-- Chcemy usunÄ…Ä‡ z tabeli emp rekordy reprezentujÄ…ce pracownikÃ³w zatrudnionych w dziale, w ktÃ³rym miaÅ‚y miejsce co najmniej trzy wypadki.
 
 DELETE FROM emp
 WHERE deptno IN (SELECT deptno 
