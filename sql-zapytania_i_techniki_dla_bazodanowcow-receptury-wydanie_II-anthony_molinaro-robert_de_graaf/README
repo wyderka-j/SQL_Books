@@ -44,3 +44,24 @@ Rozdział 3. Praca z wieloma tabelami
 3.10. Stosowanie złączeń zewnętrznych w zapytaniach wykorzystujących funkcje agregujące
 3.11. Zwracanie brakujących danych z wielu tabel
 3.12. Wykorzystywanie wartości NULL w operacjach i porównaniach
+
+Rozdział 4. Wstawianie, aktualizowanie i usuwanie
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.1. Wstawianie nowych rekordów
+4.2. Wstawianie wartości domyślnych
+4.3. Zastępowanie wartości domyślnych wartością NULL
+4.4. Kopiowanie wierszy pomiędzy tabelami
+4.5. Kopiowanie definicji tabel
+4.6. Wstawianie wierszy do wielu tabel jednocześnie
+4.7. Blokowanie możliwości wstawiania wartości do wybranych kolumn
+4.8. Modyfikowanie rekordów tabeli
+4.9. Aktualizowanie danych pod warunkiem istnienia w tabeli określonych wierszy
+4.10. Aktualizowanie wartości według zawartości innej tabeli
+4.11. Scalanie rekordów
+4.12. Usuwanie wszystkich rekordów z tabeli
+4.13. Usuwanie rekordów spełniających określone kryteria
+4.14. Usuwanie pojedynczych rekordów
+4.15. Usuwanie wierszy naruszających integralność referencyjną
+4.16. Usuwanie powtarzających się rekordów
+4.17. Usuwanie rekordów na podstawie danych z innej tabeli
+
