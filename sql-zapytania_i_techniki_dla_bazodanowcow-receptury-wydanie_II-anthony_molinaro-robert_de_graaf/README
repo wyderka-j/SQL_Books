@@ -65,3 +65,10 @@ Rozdział 4. Wstawianie, aktualizowanie i usuwanie
 4.16. Usuwanie powtarzających się rekordów
 4.17. Usuwanie rekordów na podstawie danych z innej tabeli
 
+Rozdział 5. Zapytania przetwarzające metadane
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.1. Generowanie listy tabel wchodzących w skład schematu bazy danych
+5.2. Generowanie listy kolumn danej tabeli
+5.3. Generowanie listy indeksowanych kolumn danej tabeli
+5.4. Generowanie listy ograniczeń zdefiniowanych dla tabeli
+5.5. Generowanie listy kluczy obcych pozbawionych indeksów
