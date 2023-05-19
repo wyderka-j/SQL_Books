@@ -1,7 +1,7 @@
--- Rozdzia³ 5. Zapytania przetwarzaj¹ce metadane
+-- RozdziaÅ‚ 5. Zapytania przetwarzajÂ¹ce metadane
 
--- 5.1. Generowanie listy tabel wchodz¹cych w sk³ad schematu bazy danych
--- Problem: chcemy uzyskaæ listê wszystkich tabel, które utworzono w danym schemacie bazy danych.
+-- 5.1. Generowanie listy tabel wchodzÄ…cych w skÅ‚ad schematu bazy danych
+-- Problem: chcemy uzyskaÃ¦ listÄ™ wszystkich tabel, ktÃ³re utworzono w danym schemacie bazy danych.
 -- Pracujemy ze schematem nazwanym SMEAGOL.
 
 SELECT table_name
@@ -9,7 +9,7 @@ FROM information_schema.tables
 WHERE table_schema = 'SMEAGOL';
 
 -- 5.2. Generowanie listy kolumn danej tabeli
--- Problem: Chcemy uzyskaæ listê kolumn interesuj¹cej nas tabeli wraz z zadeklarowanymi typami danych tych kolumn oraz oryginalnym porz¹dkiem w tabeli.
+-- Problem: Chcemy uzyskaÃ¦ listÄ™ kolumn interesujÄ…cej nas tabeli wraz z zadeklarowanymi typami danych tych kolumn oraz oryginalnym porzÄ…dkiem w tabeli.
 
 SELECT column_name, data_type, ordinal_position
 FROM information_schema.columns
@@ -17,8 +17,8 @@ WHERE table_schema = 'SMEAGOL'
 AND table_name = 'EMP';
 
 -- 5.3. Generowanie listy indeksowanych kolumn danej tabeli
--- Problem: Chcemy uzyskaæ listê indeksów zdefiniowanych dla danej tabeli wraz z kolumnami, których te indeksy dotycz¹, i ewentualnymi pozycjami kolumn w ramach 
--- tych indeksów.
+-- Problem: Chcemy uzyskaÃ¦ listÄ™ indeksÃ³w zdefiniowanych dla danej tabeli wraz z kolumnami, ktÃ³rych te indeksy dotyczÄ…, i ewentualnymi pozycjami kolumn w ramach tych 
+-- indeksÃ³w.
 
 SELECT a.name table_name, 
 	   b.name index_name,
@@ -35,9 +35,9 @@ WHERE a.object_id = b.object_id
 	AND c.column_id = d.column_id
 	AND a.name = 'EMP';
 
--- 4. Generowanie listy ograniczeñ zdefiniowanych dla tabeli
--- Problem: Chcemy uzyskaæ listê ograniczeñ (wraz z nazwami odpowiednich kolumn) zdefiniowanych dla pewnej tabeli wchodz¹cej w sk³ad okreœlonego schematu. Za³ó¿my np.,
--- ¿e chcemy odnaleŸæ wszystkie ograniczenia zdefiniowane dla kolumn tabeli EMP.
+-- 4. Generowanie listy ograniczeÃ± zdefiniowanych dla tabeli
+-- Problem: Chcemy uzyskaÃ¦ listÄ™ ograniczeÅ„ (wraz z nazwami odpowiednich kolumn) zdefiniowanych dla pewnej tabeli wchodzÄ…cej w skÅ‚ad okreÅ“lonego schematu. 
+-- ZaÅ‚Ã³Å¼my np., Å¼e chcemy odnaleÅºÄ‡ wszystkie ograniczenia zdefiniowane dla kolumn tabeli EMP.
 
 SELECT a.table_name, 
 	   a.constraint_name,
@@ -51,9 +51,9 @@ WHERE a.table_name = 'EMP'
 	AND a.table_schema =b.table_schema
 	AND a.constraint_name = b.constraint_name;
 
--- 5.5. Generowanie listy kluczy obcych pozbawionych indeksów
--- Problem: Chcemy uzyskaæ listê tabel zawieraj¹cych tylko te kolumny kluczy obcych, które nie s¹ indeksowane. Przypuœæmy np., ¿e chcemy okreœliæ, czy klucze obce w 
--- tabeli EMP s¹ indeksowane.
+-- 5.5. Generowanie listy kluczy obcych pozbawionych indeksÃ³w
+-- Problem: Chcemy uzyskaÃ¦ listÄ™ tabel zawierajÄ…cych tylko te kolumny kluczy obcych, ktÃ³re nie sÄ… indeksowane. PrzypuÅ›Ä‡my np., Å¼e chcemy okreÅ›liÄ‡, czy klucze obce w 
+-- tabeli EMP sÄ… indeksowane.
 
 SELECT fkeys.table_name,
 	   fkeys.constraint_name,
