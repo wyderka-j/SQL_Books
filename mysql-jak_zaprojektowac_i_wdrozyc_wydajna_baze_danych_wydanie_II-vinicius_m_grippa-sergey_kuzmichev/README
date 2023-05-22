@@ -45,3 +45,12 @@ W rozdziale zostały omówione poniższe zagadnienia:
 - Modyfikowanie struktury: Dodawanie, usuwanie i modyfikowanie kolumn; Dodawanie, usuwanie i modyfikowanie indeksów; Zmienianie nazwy tabeli i modyfikowanie innych
   struktur 
 - Usuwanie struktur: Usuwanie bazy danych; Usuwanie tabel 
+
+ Rozdział 5. Zapytania zaawansowane
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Aliasy: Alias kolumny; Aliasy tabel 
+- Agregowanie danych: Klauzula DISTINCT; Klauzula GROUP BY; Klauzula HAVING; Złączenia zaawansowane; Złączenia lewe i prawe; Złączenie naturalne; Wyrażenia stałych w 
+  złączeniach 
+- Zapytania zagnieżdżone: Podstawy zapytań zagnieżdżonych; Klauzule ANY, SOME, ALL, IN i NOT IN; Klauzule EXISTS i NOT EXISTS; Zapytanie zagnieżdżone w klauzuli FROM;
+  Zapytanie zagnieżdżone w klauzuli JOIN 
+- Zmienne użytkownika 
