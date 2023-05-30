@@ -54,3 +54,10 @@ W rozdziale zostały omówione poniższe zagadnienia:
 - Zapytania zagnieżdżone: Podstawy zapytań zagnieżdżonych; Klauzule ANY, SOME, ALL, IN i NOT IN; Klauzule EXISTS i NOT EXISTS; Zapytanie zagnieżdżone w klauzuli FROM;
   Zapytanie zagnieżdżone w klauzuli JOIN 
 - Zmienne użytkownika 
+
+**************************************************************************************************************************************************************
+                                                    Część III. MySQL w środowisku produkcyjnym
+**************************************************************************************************************************************************************
+
+Rozdział 6. Transakcje i nakładanie blokad
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
