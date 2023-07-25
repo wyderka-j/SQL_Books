@@ -72,3 +72,24 @@ Rozdział 5. Zapytania przetwarzające metadane
 5.3. Generowanie listy indeksowanych kolumn danej tabeli
 5.4. Generowanie listy ograniczeń zdefiniowanych dla tabeli
 5.5. Generowanie listy kluczy obcych pozbawionych indeksów
+
+Rozdział Rozdział 6. Praca z łańcuchami
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+6.1. Przechodzenie pomiędzy znakami łańcucha
+6.2. Umieszczanie apostrofów w stałych łańcuchowych
+6.3. Zliczanie wystąpień znaku w łańcuchu wejściowym
+6.4. Usuwanie z łańcucha niechcianych znaków
+6.5. Oddzielanie danych numerycznych od danych znakowych
+6.6. Określanie, czy łańcuch jest ciągiem alfanumerycznym
+6.7. Określanie inicjałów na podstawie całych imion i nazwisk
+6.8. Sortowanie kolumn według wybranych fragmentów łańcuchów
+6.9. Sortowanie danych według liczb zapisanych w łańcuchach
+6.10. Tworzenie listy wartości oddzielonych przecinkami z danych zawartych w wierszach tabeli
+6.11. Konwertowanie danych oddzielonych przecinkami na wielowartościową listę IN
+6.12. Sortowanie znaków w łańcuchach w porządku alfabetycznym
+6.13. Identyfikowanie łańcuchów, które można traktować jak liczby
+6.14. Odnajdywanie n-tego podłańcucha na liście oddzielonej przecinkami
+6.15. Przetwarzanie adresów IP
+6.16. Porównywanie łańcuchów znaków na podstawie brzmienia
+6.17. Wyszukiwanie tekstu niepasującego do wzorca
+
