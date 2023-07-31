@@ -93,3 +93,22 @@ Rozdział Rozdział 6. Praca z łańcuchami
 6.16. Porównywanie łańcuchów znaków na podstawie brzmienia
 6.17. Wyszukiwanie tekstu niepasującego do wzorca
 
+Rozdział Rozdział 7. Praca z liczbami
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+7.1. Wyznaczanie wartości średniej
+7.2. Identyfikacja minimalnej i maksymalnej wartości w kolumnie
+7.3. Sumowanie wartości składowanych w kolumnie
+7.4. Zliczanie wierszy tabeli
+7.5. Zliczanie różnych wartości w kolumnie
+7.6. Generowanie sum bieżących
+7.7. Generowanie iloczynów bieżących
+7.8. Wygładzanie serii wartości
+7.9. Wyznaczanie wartości modalnej (dominanty)
+7.10. Wyznaczanie mediany
+7.11. Określanie procentowego udziału w wartości łącznej
+7.12. Agregowanie kolumn zawierających wartości NULL
+7.13. Wyznaczanie wartości średnich z wyłączeniem wartości spoza określonego przedziału
+7.14. Wyodrębnianie liczb z łańcuchów alfanumerycznych
+7.15. Modyfikowanie wartości uwzględnianych w sumach bieżących
+7.16. Znajdowanie wartości odstających metodą mediany odchylenia bezwzględnego
+
