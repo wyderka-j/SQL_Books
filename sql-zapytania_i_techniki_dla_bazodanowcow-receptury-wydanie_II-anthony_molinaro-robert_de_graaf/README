@@ -73,7 +73,7 @@ Rozdział 5. Zapytania przetwarzające metadane
 5.4. Generowanie listy ograniczeń zdefiniowanych dla tabeli
 5.5. Generowanie listy kluczy obcych pozbawionych indeksów
 
-Rozdział Rozdział 6. Praca z łańcuchami
+Rozdział 6. Praca z łańcuchami
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 6.1. Przechodzenie pomiędzy znakami łańcucha
 6.2. Umieszczanie apostrofów w stałych łańcuchowych
@@ -93,7 +93,7 @@ Rozdział Rozdział 6. Praca z łańcuchami
 6.16. Porównywanie łańcuchów znaków na podstawie brzmienia
 6.17. Wyszukiwanie tekstu niepasującego do wzorca
 
-Rozdział Rozdział 7. Praca z liczbami
+Rozdział 7. Praca z liczbami
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 7.1. Wyznaczanie wartości średniej
 7.2. Identyfikacja minimalnej i maksymalnej wartości w kolumnie
@@ -111,4 +111,14 @@ Rozdział Rozdział 7. Praca z liczbami
 7.14. Wyodrębnianie liczb z łańcuchów alfanumerycznych
 7.15. Modyfikowanie wartości uwzględnianych w sumach bieżących
 7.16. Znajdowanie wartości odstających metodą mediany odchylenia bezwzględnego
+
+Rozdział 8. Działania na datach
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+8.1. Dodawanie i odejmowanie dni, miesięcy i lat
+8.2. Określanie liczby dni pomiędzy dwiema datami
+8.3. Określanie liczby dni roboczych pomiędzy dwiema datami
+8.4. Określanie liczby miesięcy lub lat dzielących dwie daty
+8.5. Określanie liczby sekund, minut lub godzin dzielących dwie daty
+8.6. Zliczanie wystąpień poszczególnych dni tygodnia w roku
+8.7. Określanie różnicy dat między rekordem bieżącym a następnym
 
