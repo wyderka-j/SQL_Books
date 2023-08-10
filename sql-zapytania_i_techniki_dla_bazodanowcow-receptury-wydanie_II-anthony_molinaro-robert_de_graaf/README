@@ -122,3 +122,18 @@ Rozdział 8. Działania na datach
 8.6. Zliczanie wystąpień poszczególnych dni tygodnia w roku
 8.7. Określanie różnicy dat między rekordem bieżącym a następnym
 
+Rozdział 9. Przetwarzanie dat
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+9.1. Określanie, czy dany rok jest rokiem przestępnym
+9.2. Określanie liczby dni w roku
+9.3. Wyodrębnianie jednostek czasu z dat wejściowych
+9.4. Określanie pierwszego i ostatniego dnia miesiąca
+9.5. Określanie wszystkich dat występowania konkretnego dnia tygodnia w ciągu danego roku
+9.6. Określanie dat pierwszego i ostatniego wystąpienia określonego dnia tygodnia w danym miesiącu
+9.7. Tworzenie kalendarza
+9.8. Generowanie dat rozpoczynających i kończących poszczególne kwartały danego roku
+9.9. Określanie daty początkowej i końcowej dla danego kwartału
+9.10. Uzupełnianie brakujących dat
+9.11. Przeszukiwanie według określonych jednostek czasu
+9.12. Porównywanie rekordów według określonych fragmentów dat
+9.13. Identyfikacja wzajemnie pokrywających się przedziałów czasowych
