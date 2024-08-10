@@ -25,8 +25,8 @@ Zadania / Exercises
 
 3.3. Utwórz zapytanie do tabeli rental zwracające identyfikatory wszystkich klientów, którzy wypożyczyli film 5 czerwca 2005 roku (wykorzystaj kolumnę rental.rental_date, 
      do zignorowania komponentu godziny możesz użyć funcji date()). Wyświetl tylko po jednym rekordzie dla każdego identyfikatora klienta. /
-     Write a query against the rental table that returns the IDs of the customers who rented a film on July 5, 2005 (use the rental.rental_date column, and you can use the 
-     date() function to ignore the time component). Include a single row for each distinct customer ID.
+     Write a query against the rental table that returns the IDs of the customers who rented a film on July 5, 2005 (use the rental.rental_date column, and you can use 
+     the date() function to ignore the time component). Include a single row for each distinct customer ID.
 
 3.4. Uzupełnij zapytanie do wielu tabel, które spowoduje wygenerowanie pokazanych dancyh wyjściowych. Miejsca do uzupełnienia są oznaczone jako <#>. /
      Fill in the blanks (denoted by <#>) for this multitable query to achieve the following results:
