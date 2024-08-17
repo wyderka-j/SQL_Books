@@ -53,3 +53,41 @@ INNER JOIN rental r
     ON c.customer_id = r.customer_id
 WHERE date(r.rental_date) = '2005-06-14'
 ORDER BY r.return_date DESC;
+
+------------------------------
+-- Rozdział 4 / Chapter 4
+------------------------------
+
+-- Zadanie / Exercise 4.1
+-- Które wartości payment_id zostaną zwrócone po użyciu tego warunku filtrowania? / Which of the payment IDs would be returned by the following filter conditions?
+-- customer_id <> 5 AND (amount > 8 OR date(payment_date) = '2005-08-23')
+
+SELECT DISTINCT customer_id 
+FROM payment 
+WHERE customer_id <> 5 
+	AND (amount > 8 OR date(payment_date) = '2005-08-23');
+
+-- Zadanie / Exercise 4.2
+-- Które wartości payment_id zostaną zwrócone po użyciu tego warunku filtrowania? / Which of the payment IDs would be returned by the following filter conditions?
+-- customer_id = 5 AND NOT (amount > 6 OR date(payment_date) = '2005-06-19')
+
+SELECT DISTINCT payment_id 
+FROM payment 
+WHERE customer_id = 5 
+	AND NOT (amount > 6 OR date(payment_date) = '2005-06-19');
+
+-- Zadanie / Exercise 4.3
+-- Przygotuj zapytanie pobierające wszystkie rekordy tabeli payments, w których wartość kolumny amount wynosi 1.98, 7.98 lub 9.98. / 
+-- Construct a query that retrieves all rows from the payments table where the amount is either 1.98, 7.98, or 9.98.
+
+SELECT amount
+FROM payment
+WHERE amount IN (1.98, 7.98, 9.98);
+
+-- Zadanie / Exercise 4.4
+-- Przygotuj zapytanie pobierajace wszystkie rekordy wszystkich klientów, których nazwisko zawiera literę A na drugiej pozycji i literę W na dowolnej pozycji po A.
+-- Construct a query that finds all customers whose last name contains an A in the second position and a W anywhere after the A.
+
+SELECT first_name, last_name
+FROM customer
+WHERE last_name LIKE '_A%W%';
