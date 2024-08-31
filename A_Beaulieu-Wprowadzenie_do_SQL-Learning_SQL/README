@@ -47,3 +47,34 @@ Zadania / Exercises
 
 4.4. Przygotuj zapytanie pobierajace wszystkie rekordy wszystkich klientów, których nazwisko zawiera literę A na drugiej pozycji i literę W na dowolnej pozycji po A. /
      Construct a query that finds all customers whose last name contains an A in the second position and a W anywhere after the A.
+
+5.1. Uzupełnij brakujące fragmenty kodu (oznaczone za pomocą <#>) w zapytaniu, które powoduje wygenerowanie pokazanych rekordów. /
+     Fill in the blanks (denoted by <#> ) for the following query to obtain the results that follow.
+		     		SELECT c.first_name, c.last_name, a.address, ct.city
+     		     		FROM customer c 
+			          INNER JOIN address <1>
+			          ON c.address_id = a.address_id
+			          INNER JOIN city ct 
+			          ON a.city_id = <2>
+ 		     		WHERE a.district = 'California'
+               +------------+-----------+------------------------+----------------+
+               | first_name | last_name | address                | city           |
+               +------------+-----------+------------------------+----------------+
+               | PATRICIA   | JOHNSON   | 1121 Loja Avenue       | San Bernardino |
+               | BETTY      | WHITE     | 770 Bydgoszcz Avenue   | Citrus Heights |
+               | ALICE      | STEWART   | 1135 Izumisano Parkway | Fontana        |
+               | ROSA       | REYNOLDS  | 793 Cam Ranh Avenue    | Lancaster      |
+               | RENEE      | LANE      | 533 al-Ayn Boulevard   | Compton        |
+               | KRISTIN    | JOHNSTON  | 226 Brest Manor        | Sunnyvale      |
+               | CASSANDRA  | WALTERS   | 920 Kumbakonam Loop    | Salinas        |
+               | JACOB      | LANCE     | 1866 al-Qatif Avenue   | El Monte       |
+               | RENE       | MCALISTER | 1895 Zhezqazghan Drive | Garden Grove   |
+               +------------+-----------+------------------------+----------------+
+               9 rows in set (0.00 sec)
+
+5.2. Utwórz zapytanie zwracające tytuł każdego filmu, w którym wystąpili aktorzy o imieniu JOHN. / 
+     Write a query that returns the title of every film in which an actor with the first name JOHN appeared.
+
+5.3. Utwórz zapytanie zwracające wszystkie rekordy klientów mieszkających w tym samym mieście. Musisz przeprowadzić złączenie tabeli address z nią samą, a każdy rekord powinien
+     zawierać dwa różne adresy. /
+     Construct a query that returns all addresses that are in the same city. You will need to join the address table to itself, and each row should include 2 different addresses
