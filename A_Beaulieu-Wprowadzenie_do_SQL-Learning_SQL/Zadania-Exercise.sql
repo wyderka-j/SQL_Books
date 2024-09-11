@@ -218,3 +218,30 @@ SELECT SIGN(-25.76823) AS sign, ABS(-2576823) AS abs, ROUND(-25.76823, 2) AS rou
 -- Write a query to return just the month portion of the current date.
 
 SELECT EXTRACT(MONTH FROM CURRENT_DATE());
+
+------------------------------
+-- Rozdział 8 / Chapter 8
+------------------------------
+
+-- Zadanie / Exercise 8.1
+-- Utwórz zapytanie zliczające rekordy w tabeli payment. /  Construct a query that counts the number of rows in the payment table.
+
+SELECT COUNT(*) AS rekoedy FROM payment;
+
+-- Zadanie / Exercise 8.2
+-- Zmodyfikuj zapytanie z ćwiczenia 8.1 w taki sposób, aby zliczało liczbę płatności dokonanych przez poszczególnych klientów. Dane wyjściowe powinny zawierać identyfikator
+-- klienta i całkowitą kwotę jego płatności. /
+-- Modify your query from Exercise 8-1 to count the number of payments made by each customer. Show the customer ID and the total amount paid for each customer.
+
+SELECT customer_id, COUNT(*), SUM(amount)
+FROM payment
+GROUP BY customer_id;
+
+-- Zadanie / Exercise 8.3
+-- Zmodyfikuj zapytanie z ćwiczenia 8.2 w taki sposób, aby uwzględniono jedynie tych klientów, którzy dokonali przynajmniej 40 płatności. /
+-- Modify your query from Exercise 8-2 to include only those customers who have made at least 40 payments.
+
+SELECT customer_id, COUNT(*), SUM(amount)
+FROM payment
+GROUP BY customer_id
+HAVING count(*) >=40;
