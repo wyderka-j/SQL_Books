@@ -127,3 +127,19 @@ Zadania / Exercises
 			SELECT 'Prolific Actor' level, 20 min_roles, 29 max_roles
 			UNION ALL
 			SELECT 'Newcomer' level, 1 min_roles, 19 max_roles
+
+10.1. Używając przedstawionych tutaj definicji tabel i ich danych, utwórz zapytanie zwracające rekordy wszystkich klientów wraz z sumą dokonanych przez nich płatności. /
+      Using the table definitions and their data presented here, write a query that returns each customer name along with their total payments:
+	customer1							payment1
+	+-------------+-------------+					+------------+-------------+--------+
+	| customer_id | name        |					| payment_id | customer_id | amount |
+	+-------------+-------------+					+------------+-------------+--------+
+	|           1 | John Smith  |					|        101 |           1 |   8.99 |
+	|           2 | Kathy Jones |					|        102 |           3 |   4.99 |
+	|           3 | Greg Oliver |					|        103 |           1 |   7.99 |
+	+-------------+-------------+					+------------+-------------+--------+
+
+10.2. Zmodyfikuj zapytanie w ćwiczeniu 10.1 w taki sposób, aby używało złączenia zewnętrznego. / Modify the query in Exercise 10.1 to use an outer join.
+
+10.3. Opracuj zapytanie pozwalające wygenerować zbiór {1,2,3, ..., 99, 100}. (Podowiedź użyj złączenia krzyżowego z co najmniej dwoma podzapytaniami kluazuli FROM). /
+      Develop a query to generate the set {1,2,3, ..., 99, 100}. (Prompt use a cross join with at least two subqueries of the FROM clause.)
