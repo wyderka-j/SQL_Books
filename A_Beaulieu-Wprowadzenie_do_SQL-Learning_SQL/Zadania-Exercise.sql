@@ -364,3 +364,56 @@ SELECT 70 x UNION ALL
 SELECT 80 x UNION ALL
 SELECT 90 x 
 ) tens;
+
+
+------------------------------
+-- Rozdział 11 / Chapter 11
+------------------------------
+
+-- Zadanie / Exercise 11.1
+-- Zmodyfikuj zapytanie wykorzystujące wyrażenie CASE, aby ten sam wynik został wygenerowany po użyciu wyszukiwanego wyrażenia CASE. Postaraj sie użyć jak najmiej klauzul WHEN./
+-- Modify the query that uses the CASE expression so that the same result is generated when using the CASE search expression. Try to use as few WHEN clauses as possible.
+--				SELECT name,
+--				  CASE name
+--			 	    WHEN 'English' THEN 'latin1'
+--				    WHEN 'Italian' THEN 'latin1'
+--				    WHEN 'French' THEN 'latin1'
+--				    WHEN 'German' THEN 'latin1'
+--				    WHEN 'Japanese' THEN 'utf8'
+--				    WHEN 'Mandarin' THEN 'utf8'
+--				    ELSE 'Unknown'
+--				  END character_set
+--				FROM language;
+
+SELECT name,
+  CASE name
+    WHEN name IN ('English', 'Italian', 'French', 'German') THEN 'latin1'
+    WHEN name IN ('Japanese', 'Mandarin') THEN 'utf'
+    ELSE 'Unknown'
+  END character_set
+FROM language;
+
+-- Zadanie / Exercise 11.2
+-- Zmodyfikuj zapytanie w taki sposób, aby zbiór wynikowy składał się z jednego rekordu z pięcioma kolumnami (po jednej dla każdej ceny). Kolumnom nadaj nazwy 
+-- G, PG, PG_13, R i NC_17. /
+-- Modify the query so that the result set consists of one record with five columns (one for each price). Name the columns G, PG, PG_13, R i NC_17.
+--				SELECT rating, count(*)
+--				FROM film
+--				GROUP BY rating;
+--				+--------+----------+
+--				| rating | count(*) |
+--				+--------+----------+
+--				| G      |      178 |
+--				| PG     |      194 |
+--				| PG-13  |      223 |
+--				| R      |      195 |
+--				| NC-17  |      210 |
+--				+--------+----------+
+
+SELECT
+SUM(CASE WHEN rating = 'G' THEN 1 ELSE 0 END) g,
+SUM(CASE WHEN rating = 'PG' THEN 1 ELSE 0 END) pg,
+SUM(CASE WHEN rating = 'PG-13' THEN 1 ELSE 0 END) pg_13,
+SUM(CASE WHEN rating = 'R' THEN 1 ELSE 0 END) r,
+SUM(CASE WHEN rating = 'NC-17' THEN 1 ELSE 0 END) nc_17
+FROM film;
